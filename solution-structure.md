@@ -1,32 +1,31 @@
 # Структура солюшена
 
 Типовая структура солюшена на примере Iwentys:
-- DataAccess/
-  - Iwentys.Database - DbContext, конфигурация DbSet'ов.
-  - Iwentys.Database.Seeding
-    - EntityGenerators - генераторый фейковых данных для демо
-- Endpoint/
-  - Iwentys.Endpoint.Client
-    - CustomComponents - шаренные UI компоненты
-    - Pages - UI страницы
-  - Iwentys.Endpoint.Controllers
-    - Iwentys.Endpoint.Controllers/*feature-name*/*Controller - группировка контроллеров
-    - Iwentys.Endpoint.Controllers/*Controller
-  - Iwentys.Endpoint.Server - конфигурация ASP проекта
-- Features/
-  - Iwentys.Features.*feature-name*
-    - /Domain/ - доменные сущности, которые содержат логику
-    - /Entities/ - сущности, которые соотносятся с таблицами в базе
-    - /Enums/
-    - /Models/ - DTO, которые используются в API как интерфейс передачи данных
-      - *entity-name*Dto.cs - модель, которая врапит сущность для возвращения entity с API
-      - *entity-name*CreateArguments.cs - модель, которая содержит параметры для создания сущности
-    - /Services/ - сервисы, которые содержат основную логику обработки запросов
-- Shared/
-  - Iwentys.Common
-    - Exceptions
+- *ProjectName*.Common
+  - Exceptions
+  - Base utils
+  - Logging
+- *ProjectName*.Domain - описание домена, основная бизнес логика
+- Modules/
+  - *ProjectName*.Modules.*ModuleName*
+- Endpoints/
+  - *ProjectName*.Endpoints.WebClient
+    - Modules - деление логики отдельных модулей
+  - *ProjectName*.Endpoint.Api - ASP проект, который содержит конфигурацию
+- Infrastructure/
+  - *ProjectName*.Infrastructure.Application
+    - BackgroundServices - описание логики фоновой активности
+    - Middlewares - описание мидлвар, которые используются в проекте
+    - Options - различные модели, которые описывают опции и конфиги
+  - *ProjectName*.Infrastructure.Database - DbContext, конфигурация DbSet'ов.
+  - *ProjectName*.Infrastructure.Database.Seeding - логика сидинга, генерации фейковых данных
+- Integrations/
+  - *ProjectName*.Integrations.*IntegrationName* - проект, который содержит логику интеграции с другими продуктами. Например, гугл диск или гитхаб.
+- Modules/
+  - *ProjectName*.Modules.*ModuleName* - Выделенный проект под определённый модуль, чтобы уменьшить связанность между компонентами
+    - Dtos/ - модели, которые используются для реквестов и респонсов
+    - Queries/ - CQRS квери
+    - Commands/ - CQRS команды
 - Tests/
   - Features/
     - *feature-name*Test
-  - TestCaseContexts/
-    - *feature-name*TestCaseContext - тулзовый класс, который содержит методы генерации нужных данных для тестов
