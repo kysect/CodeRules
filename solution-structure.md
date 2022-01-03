@@ -1,0 +1,32 @@
+# Структура солюшена
+
+Типовая структура солюшена на примере Iwentys:
+- DataAccess/
+  - Iwentys.Database - DbContext, конфигурация DbSet'ов.
+  - Iwentys.Database.Seeding
+    - EntityGenerators - генераторый фейковых данных для демо
+- Endpoint/
+  - Iwentys.Endpoint.Client
+    - CustomComponents - шаренные UI компоненты
+    - Pages - UI страницы
+  - Iwentys.Endpoint.Controllers
+    - Iwentys.Endpoint.Controllers/*feature-name*/*Controller - группировка контроллеров
+    - Iwentys.Endpoint.Controllers/*Controller
+  - Iwentys.Endpoint.Server - конфигурация ASP проекта
+- Features/
+  - Iwentys.Features.*feature-name*
+    - /Domain/ - доменные сущности, которые содержат логику
+    - /Entities/ - сущности, которые соотносятся с таблицами в базе
+    - /Enums/
+    - /Models/ - DTO, которые используются в API как интерфейс передачи данных
+      - *entity-name*Dto.cs - модель, которая врапит сущность для возвращения entity с API
+      - *entity-name*CreateArguments.cs - модель, которая содержит параметры для создания сущности
+    - /Services/ - сервисы, которые содержат основную логику обработки запросов
+- Shared/
+  - Iwentys.Common
+    - Exceptions
+- Tests/
+  - Features/
+    - *feature-name*Test
+  - TestCaseContexts/
+    - *feature-name*TestCaseContext - тулзовый класс, который содержит методы генерации нужных данных для тестов
