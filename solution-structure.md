@@ -6,8 +6,6 @@
   - Base utils
   - Logging
 - *ProjectName*.Domain - описание домена, основная бизнес логика
-- Modules/
-  - *ProjectName*.Modules.*ModuleName*
 - Endpoints/
   - *ProjectName*.Endpoints.WebClient
     - Modules - деление логики отдельных модулей
