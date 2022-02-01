@@ -34,20 +34,13 @@ public Student FindStudent(int id)
 }
 ```
 
-4. Методы, предназначенные для доступа к данным всегда возвращающие ненулевое значение, должны иметь префикс Get (и бросать ошибку, если не могут вернуть не null).
+4. Методы, предназначенные для доступа к данным всегда возвращающие ненулевое значение, должны иметь префикс Get (и бросать ошибку, если не могут вернуть не null).\
+\
+   Правильно:
+   https://github.com/kysect/CodeStyle/blob/dc89af472d14e0279e58b4a5a8bf829190049899/Samples/Proper/Person.cs#L22-L28
 
-```csharp
-// ХОРОШО
-public Student GetStudent(int id)
-{
-   /* ищем студента */
-
-   if (student is null)
-      throw new Exception($"Student with id {id} doesn't exist");
-
-   return student;
-}
-```
+   Неправильно:
+   https://github.com/kysect/CodeStyle/blob/dc89af472d14e0279e58b4a5a8bf829190049899/Samples/Invalid/Person.cs#L22-L28
 
 5. Методы, пытающиеся выполнить действие, но не обязательно выполняющие его, должны иметь префикс Try.
 
