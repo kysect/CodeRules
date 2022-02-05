@@ -6,19 +6,19 @@
   - Base utils
   - Logging
 - *ProjectName*.Domain - описание домена, основная бизнес логика
-- Endpoints/
-  - *ProjectName*.Endpoints.WebClient
+- Web/
+  - *ProjectName*.WebClient
     - Modules - деление логики отдельных модулей
-  - *ProjectName*.Endpoint.Api - ASP проект, который содержит конфигурацию
+  - *ProjectName*.WebApi - ASP проект, который содержит конфигурацию
 - Infrastructure/
-  - *ProjectName*.Infrastructure.Application
+  - *ProjectName*.Application
     - BackgroundServices - описание логики фоновой активности
     - Middlewares - описание мидлвар, которые используются в проекте
     - Options - различные модели, которые описывают опции и конфиги
-  - *ProjectName*.Infrastructure.Database - DbContext, конфигурация DbSet'ов.
-  - *ProjectName*.Infrastructure.Database.Seeding - логика сидинга, генерации фейковых данных
+  - *ProjectName*.Database - DbContext, конфигурация DbSet'ов.
+  - *ProjectName*.Database.Seeding - логика сидинга, генерации фейковых данных
 - Integrations/
-  - *ProjectName*.Integrations.*IntegrationName* - проект, который содержит логику интеграции с другими продуктами. Например, гугл диск или гитхаб.
+  - *ProjectName*.*IntegrationName* - проект, который содержит логику интеграции с другими продуктами. Например, гугл диск или гитхаб.
 - Modules/
   - *ProjectName*.Modules.*ModuleName* - Выделенный проект под определённый модуль, чтобы уменьшить связанность между компонентами
     - Dtos/ - модели, которые используются для реквестов и респонсов
