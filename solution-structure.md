@@ -15,8 +15,8 @@
     - BackgroundServices - описание логики фоновой активности
     - Middlewares - описание мидлвар, которые используются в проекте
     - Options - различные модели, которые описывают опции и конфиги
-  - *ProjectName*.DataAccess - DbContext, конфигурация DbSet'ов.
-  - *ProjectName*.DataSeeding - логика сидинга, генерации фейковых данных
+  - *ProjectName*.Database - DbContext, конфигурация DbSet'ов.
+  - *ProjectName*.Database.Seeding - логика сидинга, генерации фейковых данных
 - Integrations/
   - *ProjectName*.*IntegrationName* - проект, который содержит логику интеграции с другими продуктами. Например, гугл диск или гитхаб.
 - Modules/
