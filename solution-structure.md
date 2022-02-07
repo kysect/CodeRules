@@ -1,15 +1,15 @@
 # Структура солюшена
 
 Типовая структура солюшена на примере Iwentys:
+
 - *ProjectName*.Common
   - Exceptions
   - Base utils
   - Logging
 - *ProjectName*.Domain - описание домена, основная бизнес логика
 - Web/
-  - *ProjectName*.WebClient
-    - Modules - деление логики отдельных модулей
-  - *ProjectName*.WebApi - ASP проект, который содержит конфигурацию
+  - *ProjectName*.Web.ApiClient - сгенерированный Swagger-клиент
+  - *ProjectName*.Web.Api - ASP проект, который содержит конфигурацию
 - Infrastructure/
   - *ProjectName*.Application
     - BackgroundServices - описание логики фоновой активности
@@ -25,5 +25,8 @@
     - Queries/ - CQRS квери
     - Commands/ - CQRS команды
 - Tests/
-  - Features/
-    - *feature-name*Test
+  - *ProjectName*.*feature-name*.Tests
+
+## Заметки
+
+В pull-request #15 было описано почему для Web добавляется суффикс по папке, а для Infrastructure - нет.
