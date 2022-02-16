@@ -1,9 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <WarningLevel>4</WarningLevel>
         <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
