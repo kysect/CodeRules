@@ -25,7 +25,7 @@ var students = new List<Student>();
 
 ```csharp
 // ХОРОШО
-public Student FindStudent(int id)
+public Student? FindStudent(int id)
 {
    /* ищем студента */
 
@@ -114,12 +114,12 @@ public Student AddStudent(string name, string surname)
 
 ```csharp
 // ПЛОХО
-var money = bankAccount.CalculatePercents();
+var percents = bankAccount.CalculatePercents();
 
 // ХОРОШО
-double money = bankAccount.CalculatePercents();
-decimal money = bankAccount.CalculatePercents();
-Money money = bankAccount.CalculatePercents();
+double percents = bankAccount.CalculatePercents();
+decimal percents = bankAccount.CalculatePercents();
+Money percents = bankAccount.CalculatePercents();
 ```
 
 3. Задавайте default в операторе switch. Если поведение не определено - кидайте исключение.
@@ -163,6 +163,43 @@ if (_students.Count >= MaxStudentsAmount)
 ```
 
 5. Локальные переменные должны располагаться как можно ближе к месту использования.
+
+```csharp
+// ПЛОХО
+public void SomeCalculations(List<int> nubmers)
+{
+   var oddOnly = new List<int>();
+   var oddOnlyUnique = new List<int>();
+   var oddOnlyUniqueLimited = new List<int>();
+   int numbersCount;
+
+   oddOnly.AddRange(numbers.Where(...));
+
+   // какие-то вычисления 
+
+   oddOnlyUnique.AddRange(oddOnly.Where(...));
+
+   // какие-то вычисления 
+
+   oddOnlyUniqueLimited.AddRange(oddOnlyUnique.Take(...));
+}
+
+// УЖЕ ЛУЧШЕ
+public void SomeCalculations(List<int> nubmers)
+{
+   var oddOnly = numbers.Where(...);
+
+   // какие-то вычисления 
+
+   var oddOnlyUnique = oddOnly.Where(...));
+
+   // какие-то вычисления 
+
+   var oddOnlyUniqueLimited = oddOnlyUnique.Take(...);
+   var numbersCount = oddOnlyUniqueLimited.Count();
+}
+```
+
 6. Минимизируйте уровень вложенности, где это возможно без потери читаемости. Этого можно добиться инвертированием условного оператора if, декомпозицией логики. <https://refactoring.com/catalog/replaceNestedConditionalWithGuardClauses.html>.
 
 ```csharp
@@ -174,6 +211,7 @@ if (_students.Count >= MaxStudentsAmount)
 else 
 {
    _students.Add(stident);
+
    return student;
 }
 
@@ -187,6 +225,22 @@ return student;
 ```
 
 7. Не используйте boolean флаги для того, чтобы управлять условиями выхода из цикла.
+
+```csharp
+// ПЛОХО (не нада так пажалуста)
+while (true)
+{
+   // что угодно тут будет плохо :)
+   // особенно, если не будет brake;
+}
+
+// ЛУЧШЕ
+for (int i = 0; i < studentsConut; ++i)
+{
+   // почти всё что угодно тут будет лучше чем предыдущий вариант
+   // особенно, если тут не будет while (true)
+}
+```
 
 ## Method declaration
 
@@ -265,6 +319,7 @@ public MegaFaculty(string facultyName)
    Name = facultyName;
 
    /* сложная инициализация с вызовом различных методов */
+   NotifyISU(this);
 }
 ```
 
