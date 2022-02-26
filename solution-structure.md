@@ -4,7 +4,7 @@
 
 - .Domain - Business logic
 - Application/
-  - .Application.Abstractions - Abstraction over data access for CQRS
+  - .Application.Abstractions - Абстракции поверх работы с базой для CQRS
   - .Dto - модели, которые используются для реквестов и респонсов
   - .Application - CQRS etc.
 - Infrastructure/
