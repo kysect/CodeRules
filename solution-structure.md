@@ -1,37 +1,91 @@
 # Структура солюшена
 
-Типовая структура солюшена на примере Iwentys:
+Пример структуры солюшена, который применяется в репозиториях Kysect:
 
-- *ProjectName*.Common
-  - Exceptions
-  - Base utils
-  - Logging
-- *ProjectName*.Domain - описание домена, основная бизнес логика
-- Web/
-  - *ProjectName*.Web.ApiClient - сгенерированный Swagger-клиент
-  - *ProjectName*.Web.Api - ASP проект, который содержит конфигурацию
+- .Domain - Business logic
+- Application/
+  - .Application.Abstractions - Абстракции поверх работы с базой для CQRS
+  - .Dto - модели, которые используются для реквестов и респонсов
+  - .Application - CQRS etc.
 - Infrastructure/
-  - *ProjectName*.Application
-    - BackgroundServices - описание логики фоновой активности
-    - Middlewares - описание мидлвар, которые используются в проекте
-    - Options - различные модели, которые описывают опции и конфиги
-  - *ProjectName*.Database - DbContext, конфигурация DbSet'ов.
-  - *ProjectName*.Database.Seeding - логика сидинга, генерации фейковых данных
+  - .DataAccess
+  - .DataSeeding - Генерация фейковых сущностей и сидинг базы этими сущностями
+  - .Mapping
+  - .AspConfig - мидлвары, конфигурации логирования, конфиги
+  - .Asp - Запускаемый проект, в котором описан запуск сервиса
+- Presentation/
+  - .Web.Api - Слой представления, контроллеры
+  - .Web.ApiClient - сгенерированный Swagger-клиент
 - Integrations/
-  - *ProjectName*.*IntegrationName* - проект, который содержит логику интеграции с другими продуктами. Например, гугл диск или гитхаб.
-- Modules/
-  - *ProjectName*.Modules.*ModuleName* - Выделенный проект под определённый модуль, чтобы уменьшить связанность между компонентами
-    - Dtos/ - модели, которые используются для реквестов и респонсов
-    - Queries/ - CQRS квери
-    - Commands/ - CQRS команды
+  - .Integration.*IntegrationName* - проект, который содержит логику интеграции с другими продуктами. Например, гугл диск или гитхаб.
 - Tests/
-  - *ProjectName*.*feature-name*.Tests
+  - .Tests
+
+## Диаграмма зависимостей и структуры
+
+![UML](Images/solution-structure.png)
+
+```plantuml
+@startuml iwentys-entity-manager
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Boundary(DomainLayer, "Domain") {
+    Container(Domain, "Domain")
+}
+
+Boundary(ApplicationLayer, "Application") {
+    Container(Dto, "Dto")
+    Container(Application, "Application")
+    Container(Application.Abstractions, "Application.Abstractions")
+}
+
+Boundary(Presentation, "Presentation") {
+    Container(Api, "API")
+    Container(ApiClient, "ApiClient")
+}
+
+Boundary(Infrastructure, "Infrastructure") {
+    Container(Mapping, "Mapping")
+    Container(AspConfig, "AspConfig")
+    Container(DataAccess, "DataAccess")
+    Container(DataSeeding, "DataSeeding")
+    Container(ASP, "ASP")
+}
+
+Rel(Application, Domain, "Uses")
+
+Rel(Application, Application.Abstractions, "Uses")
+Rel(Application, Dto, "Uses")
+Rel(Api, Application, "Uses")
+
+Rel(Mapping, Dto, "Uses")
+Rel(DataAccess, Application.Abstractions, "Uses")
+Rel(DataSeeding, DataAccess, "Uses")
+
+Rel(AspConfig, DataSeeding, "Uses")
+Rel(AspConfig, Mapping, "Uses")
+
+Rel(ASP, AspConfig, "Uses")
+Rel(ASP, Api, "Uses")
+
+@enduml
+```
 
 ## Заметки
 
-В pull-request #15 было описано почему для Web добавляется суффикс по папке, а для Infrastructure - нет.
+Проекты выделены по директориям. Каждая директория соответствует слою из луковой архитектуры. Слои не стоит использовать при формировании имени проекта.
 
-### Category structuring 
+При этом есть необходимость иногда группировать проекты в определённый скоуп и это явно указывать это названии проекта. Примеры такого подхода:
+
+- Web. ASP Web API и API-клиент сваггера - это проекты, который между собой связаны и для них можно определить общую категорию.
+- Integration. В проектах иногда нужно писать интеграцию с внешними источниками.
+
+## Формальное описание структурирования
+
+В pull-request #15 было описано почему для Web добавляется суффикс по папке, а для Infrastructure - нет. @ronimizy делал формальное описание, но он может быть избыточно сложным для восприятия.
+
+### Category structuring
 
 > **Компонент системы** - фрагмент кодовой базы, отвечающий за реализацию какого-то логического функционала системы.
 
