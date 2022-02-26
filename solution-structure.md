@@ -27,46 +27,47 @@
 
 ```plantuml
 @startuml iwentys-entity-manager
+
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
 Boundary(DomainLayer, "Domain") {
-    Container(Domain, "Domain", "")
+    Container(Domain, "Domain")
 }
 
 Boundary(ApplicationLayer, "Application") {
-    Container(Dto, "Dto", "")
-    Container(Application, "Application", "")
-    Container(Application.Abstractions, "Application.Abstractions", "")
+    Container(Dto, "Dto")
+    Container(Application, "Application")
+    Container(Application.Abstractions, "Application.Abstractions")
 }
 
 Boundary(Presentation, "Presentation") {
-    Container(Api, "API", "")
-    Container(ApiClient, "ApiClient", "")
+    Container(Api, "API")
+    Container(ApiClient, "ApiClient")
 }
 
 Boundary(Infrastructure, "Infrastructure") {
-    Container(Mapping, "Mapping", "")
-    Container(AspConfig, "AspConfig", "")
-    Container(DataAccess, "DataAccess", "")
-    Container(DataSeeding, "DataSeeding", "")
-    Container(ASP, "ASP", "")
+    Container(Mapping, "Mapping")
+    Container(AspConfig, "AspConfig")
+    Container(DataAccess, "DataAccess")
+    Container(DataSeeding, "DataSeeding")
+    Container(ASP, "ASP")
 }
 
-Rel(Application, Domain, "Uses", "SQL")
+Rel(Application, Domain, "Uses")
 
-Rel(Application, Application.Abstractions, "Uses", "SQL")
-Rel(Application, Dto, "Uses", "SQL")
-Rel(Api, Application, "Uses", "SQL")
+Rel(Application, Application.Abstractions, "Uses")
+Rel(Application, Dto, "Uses")
+Rel(Api, Application, "Uses")
 
-Rel(Mapping, Dto, "Uses", "SQL")
-Rel(DataAccess, Application.Abstractions, "Uses", "SQL")
-Rel(DataSeeding, DataAccess, "Uses", "SQL")
+Rel(Mapping, Dto, "Uses")
+Rel(DataAccess, Application.Abstractions, "Uses")
+Rel(DataSeeding, DataAccess, "Uses")
 
-Rel(AspConfig, DataSeeding, "Uses", "SQL")
-Rel(AspConfig, Mapping, "Uses", "SQL")
+Rel(AspConfig, DataSeeding, "Uses")
+Rel(AspConfig, Mapping, "Uses")
 
-Rel(ASP, AspConfig, "Uses", "SQL")
-Rel(ASP, Api, "Uses", "SQL")
+Rel(ASP, AspConfig, "Uses")
+Rel(ASP, Api, "Uses")
 
 @enduml
 ```
