@@ -21,6 +21,56 @@
 - Tests/
   - .Tests
 
+## Диаграмма зависимостей и структуры
+
+![UML](Images/solution-structure.png)
+
+```plantuml
+@startuml iwentys-entity-manager
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Boundary(DomainLayer, "Domain") {
+    Container(Domain, "Domain", "")
+}
+
+Boundary(ApplicationLayer, "Application") {
+    Container(Dto, "Dto", "")
+    Container(Application, "Application", "")
+    Container(Application.Abstractions, "Application.Abstractions", "")
+}
+
+Boundary(Presentation, "Presentation") {
+    Container(Api, "API", "")
+    Container(ApiClient, "ApiClient", "")
+}
+
+Boundary(Infrastructure, "Infrastructure") {
+    Container(Mapping, "Mapping", "")
+    Container(AspConfig, "AspConfig", "")
+    Container(DataAccess, "DataAccess", "")
+    Container(DataSeeding, "DataSeeding", "")
+    Container(ASP, "ASP", "")
+}
+
+Rel(Application, Domain, "Uses", "SQL")
+
+Rel(Application, Application.Abstractions, "Uses", "SQL")
+Rel(Application, Dto, "Uses", "SQL")
+Rel(Api, Application, "Uses", "SQL")
+
+Rel(Mapping, Dto, "Uses", "SQL")
+Rel(DataAccess, Application.Abstractions, "Uses", "SQL")
+Rel(DataSeeding, DataAccess, "Uses", "SQL")
+
+Rel(AspConfig, DataSeeding, "Uses", "SQL")
+Rel(AspConfig, Mapping, "Uses", "SQL")
+
+Rel(ASP, AspConfig, "Uses", "SQL")
+Rel(ASP, Api, "Uses", "SQL")
+
+@enduml
+```
+
 ## Заметки
 
 Проекты выделены по директориям. Каждая директория соответствует слою из луковой архитектуры. Слои не стоит использовать при формировании имени проекта.
