@@ -16,12 +16,12 @@ dotnet_diagnostic.IDE0005.severity = warning
 dotnet_style_require_accessibility_modifiers = always
 
 # IDE0090: Use 'new(...)'
-csharp_style_implicit_object_creation_when_type_is_apparent = false
+csharp_style_implicit_object_creation_when_type_is_apparent = false:suggestion
 csharp_preserve_single_line_blocks=true
-csharp_using_directive_placement=outside_namespace:warning
+csharp_using_directive_placement= outside_namespace:warning
 csharp_style_unused_value_assignment_preference=discard_variable:error
-csharp_prefer_static_local_function=true:warning
-csharp_style_prefer_pattern_matching=true:suggestion
+csharp_prefer_static_local_function= true:warning
+csharp_style_prefer_pattern_matching= true:suggestion
 csharp_style_var_for_built_in_types=false:warning
 dotnet_diagnostic.CA1001.severity=error
 
@@ -54,13 +54,36 @@ csharp_new_line_before_members_in_object_initializers=false
 
 # SA1502: Element should not be on a single line
 dotnet_diagnostic.SA1502.severity = silent
+csharp_space_around_binary_operators = before_and_after
+csharp_prefer_simple_using_statement = true:suggestion
+csharp_prefer_braces = when_multiline:warning
+csharp_style_namespace_declarations = file_scoped:warning
+csharp_style_prefer_method_group_conversion = true:warning
+csharp_style_prefer_top_level_statements = true:silent
+csharp_style_expression_bodied_methods = false:warning
+csharp_style_expression_bodied_constructors = false:silent
+csharp_style_expression_bodied_operators = false:silent
+csharp_style_expression_bodied_properties = true:silent
+csharp_style_expression_bodied_indexers = true:silent
+csharp_style_expression_bodied_accessors = true:silent
+csharp_style_expression_bodied_lambdas = true:silent
+csharp_style_expression_bodied_local_functions = false:silent
+csharp_style_throw_expression = true:suggestion
+csharp_style_prefer_null_check_over_type_check = true:suggestion
+csharp_prefer_simple_default_expression = true:suggestion
+csharp_style_inlined_variable_declaration = true:suggestion
+# SA1413: Use trailing comma in multi-line initializers
+dotnet_diagnostic.SA1413.severity = suggestion
+
+# SA1201: Elements should appear in the correct order
+dotnet_diagnostic.SA1201.severity = none
 
 [*.{cs,vb}]
-dotnet_style_prefer_auto_properties=true:suggestion
-dotnet_style_prefer_is_null_check_over_reference_equality_method=true:warning
-dotnet_style_null_propagation=true:warning
-dotnet_style_explicit_tuple_names=true:warning
-dotnet_style_prefer_inferred_tuple_names=true:warning
+dotnet_style_prefer_auto_properties= true:suggestion
+dotnet_style_prefer_is_null_check_over_reference_equality_method= true:warning
+dotnet_style_null_propagation= true:warning
+dotnet_style_explicit_tuple_names= true:warning
+dotnet_style_prefer_inferred_tuple_names= true:warning
 dotnet_style_predefined_type_for_locals_parameters_members=true:suggestion
 dotnet_code_quality_unused_parameters=all:warning
 dotnet_style_qualification_for_field=false:warning
