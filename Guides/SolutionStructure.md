@@ -23,7 +23,7 @@
 
 ## Диаграмма зависимостей и структуры
 
-![UML](Images/solution-structure.png)
+![UML](../Images/solution-structure.png)
 
 ```plantuml
 @startuml iwentys-entity-manager
