@@ -1,5 +1,10 @@
 # https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/language-rules
 
+[*.{cs,vb}]
+tab_width = 4
+indent_size = 4
+end_of_line = crlf
+
 [*.cs]
 
 dotnet_diagnostic.IDE0001.severity = warning
@@ -9,10 +14,10 @@ dotnet_diagnostic.IDE0002.severity = warning
 # IDE0003 and IDE0009
 dotnet_diagnostic.IDE0003.severity = warning
 dotnet_diagnostic.IDE0009.severity = warning
-dotnet_style_qualification_for_field = false
-dotnet_style_qualification_for_property = false
-dotnet_style_qualification_for_method = false
-dotnet_style_qualification_for_event = false
+dotnet_style_qualification_for_field = false:warning
+dotnet_style_qualification_for_property = false:warning
+dotnet_style_qualification_for_method = false:warning
+dotnet_style_qualification_for_event = false:warning
 
 dotnet_diagnostic.IDE0004.severity = warning
 dotnet_diagnostic.IDE0005.severity = warning
@@ -21,6 +26,8 @@ dotnet_diagnostic.IDE0005.severity = warning
 dotnet_diagnostic.IDE0007.severity = warning
 dotnet_diagnostic.IDE0008.severity = warning
 csharp_style_var_when_type_is_apparent = true:warning
+csharp_style_var_for_built_in_types = false:silent
+csharp_style_var_elsewhere = false:silent
 
 # IDE0010
 dotnet_diagnostic.IDE0010.severity = suggestion
@@ -35,7 +42,7 @@ csharp_style_throw_expression = true:warning
 
 # IDE0017
 dotnet_diagnostic.IDE0017.severity = suggestion
-dotnet_style_object_initializer = true
+dotnet_style_object_initializer = true:suggestion
 
 # IDE0018
 dotnet_diagnostic.IDE0018.severity = suggestion
@@ -77,24 +84,24 @@ csharp_style_expression_bodied_accessors = when_on_single_line:suggestion
 
 # IDE0028
 dotnet_diagnostic.IDE0028.severity = suggestion
-dotnet_style_collection_initializer = true
+dotnet_style_collection_initializer = true:suggestion
 
 # IDE0029 and IDE0030
 dotnet_diagnostic.IDE0029.severity = suggestion
 dotnet_diagnostic.IDE0030.severity = suggestion
-dotnet_style_coalesce_expression = true
+dotnet_style_coalesce_expression = true:suggestion
 
 # IDE0031
 dotnet_diagnostic.IDE0031.severity = suggestion
-dotnet_style_null_propagation = true
+dotnet_style_null_propagation = true:suggestion
 
 # IDE0032
 dotnet_diagnostic.IDE0032.severity = warning
-dotnet_style_prefer_auto_properties = true
+dotnet_style_prefer_auto_properties = true:warning
 
 # IDE0033
 dotnet_diagnostic.IDE0033.severity = warning
-dotnet_style_explicit_tuple_names = true
+dotnet_style_explicit_tuple_names = true:warning
 
 # IDE0034
 dotnet_diagnostic.IDE0034.severity = warning
@@ -109,7 +116,8 @@ csharp_preferred_modifier_order = public,private,protected,internal,static,exter
 
 # IDE0037
 dotnet_diagnostic.IDE0037.severity = warning
-dotnet_style_prefer_inferred_tuple_names = true
+dotnet_style_prefer_inferred_tuple_names = true:warning
+dotnet_style_prefer_inferred_anonymous_type_member_names = true:warning
 
 # IDE0039
 dotnet_diagnostic.IDE0039.severity = suggestion
@@ -117,11 +125,11 @@ csharp_style_prefer_local_over_anonymous_function = true:suggestion
 
 # IDE0040
 dotnet_diagnostic.IDE0040.severity = warning
-dotnet_style_require_accessibility_modifiers = always
+dotnet_style_require_accessibility_modifiers = always:warning
 
 # IDE0041
 dotnet_diagnostic.IDE0041.severity = warning
-dotnet_style_prefer_is_null_check_over_reference_equality_method = true
+dotnet_style_prefer_is_null_check_over_reference_equality_method = true:warning
 
 # IDE0042
 dotnet_diagnostic.IDE0042.severity = suggestion
@@ -129,28 +137,28 @@ csharp_style_deconstructed_variable_declaration = true:suggestion
 
 # IDE0044
 dotnet_diagnostic.IDE0044.severity = warning
-dotnet_style_readonly_field = true
+dotnet_style_readonly_field = true:warning
 
 # IDE0045
 dotnet_diagnostic.IDE0045.severity = suggestion
-dotnet_style_prefer_conditional_expression_over_assignment = true
+dotnet_style_prefer_conditional_expression_over_assignment = true:suggestion
 
 # IDE0046
 dotnet_diagnostic.IDE0046.severity = suggestion
-dotnet_style_prefer_conditional_expression_over_return = true
+dotnet_style_prefer_conditional_expression_over_return = true:suggestion
 
 # IDE0047 and IDE0048
 dotnet_diagnostic.IDE0047.severity = warning
 dotnet_diagnostic.IDE0048.severity = warning
-dotnet_style_parentheses_in_arithmetic_binary_operators = always_for_clarity
-dotnet_style_parentheses_in_relational_binary_operators = always_for_clarity
-dotnet_style_parentheses_in_other_binary_operators = always_for_clarity
-dotnet_style_parentheses_in_other_operators = never_if_unnecessary
+dotnet_style_parentheses_in_arithmetic_binary_operators = always_for_clarity:warning
+dotnet_style_parentheses_in_relational_binary_operators = always_for_clarity:warning
+dotnet_style_parentheses_in_other_binary_operators = always_for_clarity:warning
+dotnet_style_parentheses_in_other_operators = never_if_unnecessary:warning
 
 # IDE0049
 dotnet_diagnostic.IDE0049.severity = warning
-dotnet_style_predefined_type_for_locals_parameters_members = true
-dotnet_style_predefined_type_for_member_access = true
+dotnet_style_predefined_type_for_locals_parameters_members = true:warning
+dotnet_style_predefined_type_for_member_access = true:warning
 
 # IDE0050-52
 dotnet_diagnostic.IDE0050.severity = warning
@@ -164,13 +172,13 @@ csharp_style_expression_bodied_lambdas = :suggestion
 # IDE0054 and IDE0074
 dotnet_diagnostic.IDE0054.severity = suggestion
 dotnet_diagnostic.IDE0074.severity = suggestion
-dotnet_style_prefer_compound_assignment = true
+dotnet_style_prefer_compound_assignment = true:suggestion
 
 # IDE0055
 dotnet_diagnostic.IDE0055.severity = warning
 dotnet_sort_system_directives_first = false
 dotnet_separate_import_directive_groups = false
-dotnet_style_namespace_match_folder = true
+dotnet_style_namespace_match_folder = true:warning
 csharp_new_line_before_open_brace = all
 csharp_new_line_before_else = true
 csharp_new_line_before_catch = true
@@ -221,8 +229,10 @@ csharp_style_prefer_range_operator = false:warning
 dotnet_diagnostic.IDE0058.severity = none
 dotnet_diagnostic.IDE0059.severity = none
 dotnet_diagnostic.IDE0060.severity = none
+csharp_style_unused_value_expression_statement_preference = discard_variable:none
 csharp_style_unused_value_assignment_preference = discard_variable:none
-dotnet_code_quality_unused_parameters = all
+dotnet_code_quality_unused_parameters = all:none
+
 
 # IDE0061
 dotnet_diagnostic.IDE0061.severity = suggestion
@@ -253,7 +263,7 @@ dotnet_diagnostic.IDE0070.severity = warning
 
 # IDE0071
 dotnet_diagnostic.IDE0071.severity = none
-dotnet_style_prefer_simplified_interpolation = true
+dotnet_style_prefer_simplified_interpolation = true:suggestion
 
 # IDE0072
 dotnet_diagnostic.IDE0072.severity = warning
@@ -263,11 +273,12 @@ file_header_template = unset
 
 # IDE0075
 dotnet_diagnostic.IDE0075.severity = suggestion
-dotnet_style_prefer_simplified_boolean_expressions = true
+dotnet_style_prefer_simplified_boolean_expressions = true:suggestion
 
 # IDE0078
 # dotnet_diagnostic.IDE0078.severity = warning
 # csharp_style_prefer_pattern_matching = true:suggestion
+csharp_style_prefer_pattern_matching = true:none
 
 # IDE0082
 dotnet_diagnostic.IDE0082.severity = warning
@@ -531,3 +542,20 @@ dotnet_naming_symbols.other_public_protected_fields_group.applicable_kinds      
 dotnet_naming_rule.other_public_protected_fields_disallowed_rule.symbols             = other_public_protected_fields_group
 dotnet_naming_rule.other_public_protected_fields_disallowed_rule.style               = disallowed_style
 dotnet_naming_rule.other_public_protected_fields_disallowed_rule.severity            = error
+
+# Other
+
+dotnet_style_operator_placement_when_wrapping = beginning_of_line
+
+
+# Not verified
+
+csharp_style_prefer_method_group_conversion = true:silent
+csharp_style_prefer_top_level_statements = true:silent
+csharp_style_allow_embedded_statements_on_same_line_experimental = true:silent
+csharp_style_allow_blank_line_after_colon_in_constructor_initializer_experimental = true:silent
+csharp_style_allow_blank_lines_between_consecutive_braces_experimental = true:silent
+dotnet_style_allow_multiple_blank_lines_experimental = true:silent
+dotnet_style_allow_statement_immediately_after_block_experimental = true:silent
+# IDE0230
+csharp_style_prefer_utf8_string_literals = true:suggestion
