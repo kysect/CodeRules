@@ -90,7 +90,7 @@ foreach (var student in relevantStudents)
 
 ### Плохо
 ```cs
-var location = "Erevan";
+var location = "Yerevan";
 var age = 69;
 var relevantStudents = _students
    .Where(x => x.Location.Equals(location))
