@@ -70,6 +70,7 @@ public bool TryWithdrawMoney(CreditCard creditCard, int password, double moneyTo
 6. Используйте studentsCount и studenstList вместо numberOfStudents, listOfStudents.
 
 ## Formatting
+
 1. Добавляйте отступы до и после многострочных элементов кода (кроме случаев когда элемент находится в конце блока). 
 Однострочные элементы кода можно группировать без пропуска строк.
 
