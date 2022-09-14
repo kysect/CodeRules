@@ -75,7 +75,7 @@ public bool TryWithdrawMoney(CreditCard creditCard, int password, double moneyTo
 
 ### Хорошо
 ```csharp
-var location = "Erevan";
+var location = "Yerevan";
 var age = 69;
 
 var relevantStudents = _students
