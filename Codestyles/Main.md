@@ -69,6 +69,38 @@ public bool TryWithdrawMoney(CreditCard creditCard, int password, double moneyTo
 
 6. Используйте studentsCount и studenstList вместо numberOfStudents, listOfStudents.
 
+## Formatting
+1. Добавляйте отступы до и после многострочных элементов кода (кроме случаев когда элемент находится в конце блока). 
+Однострочные элементы кода можно группировать без пропуска строк.
+
+### Хорошо
+```csharp
+var location = "Erevan";
+var age = 69;
+
+var relevantStudents = _students
+   .Where(x => x.Location.Equals(location))
+   .Where(x => x.Age.Equals(age));
+   
+foreach (var student in relevantStudents)
+{
+   Console.WriteLine($"Найден дед - {student.Name}");
+}
+```
+
+### Плохо
+```cs
+var location = "Erevan";
+var age = 69;
+var relevantStudents = _students
+   .Where(x => x.Location.Equals(location))
+   .Where(x => x.Age.Equals(age));
+foreach (var student in relevantStudents)
+{
+   Console.WriteLine($"Найден дед - {student.Name}");
+}
+```
+
 ## Variable and operator declaration
 
 1. Для неочевидных числовых значений необходимо создавать именованные константы. Не используйте в коде магические числа.
