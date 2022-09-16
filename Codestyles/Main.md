@@ -102,7 +102,7 @@ foreach (var student in relevantStudents)
 }
 ```
 
-2. Пропускайте строки между членами типа.
+2. Лоически групиируйте члены типа, отделяя группы переносами строк.
 
 ### Хорошо
 
@@ -110,18 +110,43 @@ foreach (var student in relevantStudents)
 public class Student 
 {
    public int Id { get; }
+   public string FirstName { get; }
+   public string LastName { get; }
    
-   public string Name { get; }
+   public string FullName => $"{FirstName} {LastName}";
+   
+   public override string ToString()
+      => $"[{Id}] {FullName}";
 }
 ```
 
 ### Плохо
 
 ```cs
-public class Student
+public class Student 
 {
    public int Id { get; }
-   public string Name { get; }
+   public string FirstName { get; }
+   public string LastName { get; }
+   public string FullName => $"{FirstName} {LastName}";
+   public override string ToString()
+      => $"[{Id}] {FullName}";
+}
+```
+
+```cs
+public class Student 
+{
+   public int Id { get; }
+
+   public string FirstName { get; }
+
+   public string LastName { get; }
+
+   public string FullName => $"{FirstName} {LastName}";
+
+   public override string ToString()
+      => $"[{Id}] {FullName}";
 }
 ```
 
