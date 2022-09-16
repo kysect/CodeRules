@@ -71,7 +71,7 @@ public bool TryWithdrawMoney(CreditCard creditCard, int password, double moneyTo
 
 ## Formatting
 
-1. Добавляйте отступы до и после многострочных элементов кода (кроме случаев когда элемент находится в конце блока). 
+1. Добавляйте переносы строк до и после многострочных элементов кода (кроме случаев когда элемент находится в конце блока). 
 Однострочные элементы кода можно группировать без пропуска строк.
 
 ### Хорошо
@@ -99,6 +99,77 @@ var relevantStudents = _students
 foreach (var student in relevantStudents)
 {
    Console.WriteLine($"Найден дед - {student.Name}");
+}
+```
+
+2. Лоически групиируйте члены типа, отделяя группы переносами строк. (При больших размерах групп, можно выделять подгруппы, по смысловому признаку, отделяя подгруппы пропусками строк)
+
+### Хорошо
+
+```cs
+public class Student 
+{
+   public int Id { get; }
+   public string FirstName { get; }
+   public string LastName { get; }
+   
+   public string FullName => $"{FirstName} {LastName}";
+   
+   public override string ToString()
+      => $"[{Id}] {FullName}";
+}
+```
+
+### Плохо
+
+```cs
+public class Student 
+{
+   public int Id { get; }
+   public string FirstName { get; }
+   public string LastName { get; }
+   public string FullName => $"{FirstName} {LastName}";
+   public override string ToString()
+      => $"[{Id}] {FullName}";
+}
+```
+
+```cs
+public class Student 
+{
+   public int Id { get; }
+
+   public string FirstName { get; }
+
+   public string LastName { get; }
+
+   public string FullName => $"{FirstName} {LastName}";
+
+   public override string ToString()
+      => $"[{Id}] {FullName}";
+}
+```
+
+3. Добавляйте перенос строк перед оператором `return`.
+
+### Хорошо
+```cs
+public int Calculate()
+{
+   var x = 420 * 228;
+   var y = x / 1337d;
+   
+   return x + y;
+}
+```
+
+### Плохо
+```cs
+public int Calculate()
+{
+   var x = 420 * 228;
+   var y = x / 1337d;
+   return x + y;
 }
 ```
 
