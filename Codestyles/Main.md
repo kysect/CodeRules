@@ -421,6 +421,7 @@ public MegaFaculty(string facultyName)
 ```
 
 ## Property declaration
+
 1. При объявлении автосвойств, помещайте аксессоры на одной строке с названием и типом
 ```cs
 // ХОРОШО
