@@ -359,6 +359,36 @@ public MegaFaculty(string facultyName)
 }
 ```
 
+## Property declaration
+1. При объявлении автосвойств, помещайте аксессоры на одной строке с названием и типом
+```cs
+// ХОРОШО
+public int Value { get; set; }
+
+// ПЛОХО
+public int Value
+{ get; set; }
+```
+2. При объявлении get-only свойств, используйте bodied expressions вместо явного `get` аксессора
+```cs
+// ХОРОШО
+public IReadOnlyCollection<string> Values => _values;
+
+// ПЛОХО
+public IReadOnlyCollection<string> Values
+{
+   get 
+   {
+      return _values;
+   }
+}
+
+public IReadOnlyCollection<string> Values
+{
+   get => _values;
+}
+```
+
 ## Type declaration
 
 1. Конструктор по умолчанию объявляйте явно.
