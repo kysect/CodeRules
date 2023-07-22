@@ -8,11 +8,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <EditorConfigFiles Remove="..\.editorconfig" />
+        <EditorConfigFiles Remove="..\EditorConfig\.editorconfig" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="..\.editorconfig" />
+        <None Include="..\EditorConfig\.editorconfig" />
     </ItemGroup>
 
     <ItemGroup>

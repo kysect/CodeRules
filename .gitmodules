@@ -1,0 +1,3 @@
+[submodule "Editorconfig"]
+	path = Editorconfig
+	url = https://github.com/kysect/.editorconfig.git
