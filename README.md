@@ -4,7 +4,7 @@
 
 - [Основной кодстайл](Codestyles/Main.md)
 - [Solution structure](Guides/SolutionStructure.md)
-- [editorconfig](.editorconfig)
+- [editorconfig](EditorConfig/.editorconfig)
 
 ## Процедура добавления нового правила стиля / изменения существующего
 
