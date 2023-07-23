@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kysect.Editorconfig", "Kysect.Editorconfig.csproj", "{168F2A5A-C9A0-4CBD-AAD1-1E2E579ED876}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{168F2A5A-C9A0-4CBD-AAD1-1E2E579ED876}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{168F2A5A-C9A0-4CBD-AAD1-1E2E579ED876}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{168F2A5A-C9A0-4CBD-AAD1-1E2E579ED876}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{168F2A5A-C9A0-4CBD-AAD1-1E2E579ED876}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CC8175B5-097B-4842-AB79-28625242D049}
+	EndGlobalSection
+EndGlobal
