@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -10,9 +10,18 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>Kysect</Authors>
     <Company>Kysect</Company>
+    <Title>Kysect.EditorConfig</Title>
+    <Description>Kysect.EditorConfig is nuget package for sharing and sync .editorconfig file between projects.</Description>
+    <PackageProjectUrl>https://github.com/kysect/CodeRules</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/kysect/CodeRules</RepositoryUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Include="Kysect.Editorconfig.props" Pack="true" PackagePath="\build" />
     <None Include=".editorconfig" Pack="true" PackagePath="\content\Rules" />
   </ItemGroup>
