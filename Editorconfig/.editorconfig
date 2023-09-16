@@ -2723,6 +2723,7 @@ dotnet_diagnostic.CA1061.severity = warning
 ## All reference arguments that are passed to externally visible methods should be checked against null. If appropriate, throw an xref:System.ArgumentNullException when the argument is null.
 ## If a method can be called from an unknown assembly because it is declared public or protected, you should validate all parameters of the method. If the method is designed to be called only by known assemblies, mark the method internal and apply the xref:System.Runtime.CompilerServices.InternalsVisibleToAttribute attribute to the assembly that contains the method.
 dotnet_diagnostic.CA1062.severity = warning
+dotnet_code_quality.CA1062.null_check_validation_methods = ThrowIfNull
 
 ## Implement IDisposable correctly (CA1063)
 ## All xref:System.IDisposable types should implement the Dispose pattern correctly.
