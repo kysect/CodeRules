@@ -5,6 +5,7 @@
 	    <Nullable>enable</Nullable>
 	    <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
 
+        <AnalysisLevel>latest-recommended</AnalysisLevel>
 	    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 		<EnableNETAnalyzers>true</EnableNETAnalyzers>
 	    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
