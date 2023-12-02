@@ -1,8 +1,11 @@
-[*.{cs,vb}]
+[*]
 tab_width = 4
 indent_size = 4
+indent_style = space
 end_of_line = crlf
+insert_final_newline = false
 
+[*.{cs,vb}]
 ## Simplify name (IDE0001)
 ## This rule concerns the use of simplified type names in declarations and executable code, when possible. You can remove unnecessary name qualification to simplify code and improve readability.
 ## using System.IO;
@@ -214,7 +217,7 @@ csharp_prefer_braces = when_multiline
 
 ## Use throw expression (IDE0016)
 ## This style rule concerns the use of throw expressions instead of throw statements. Set the severity of rule IDE0016 to define how the rule should be enforced, for example, as a warning or an error.
-dotnet_diagnostic.IDE0016.severity = suggestion
+dotnet_diagnostic.IDE0016.severity = none
 
 ## Options:
 ## csharp_style_throw_expression
@@ -471,7 +474,7 @@ dotnet_style_prefer_auto_properties = true
 
 ## Use explicitly provided tuple name (IDE0033)
 ## This style rule concerns the use of explicit tuple names versus implicit 'ItemX' properties when accessing tuple fields.
-dotnet_diagnostic.IDE0033.severity = error
+dotnet_diagnostic.IDE0033.severity = warning
 
 ## Options:
 ## dotnet_style_explicit_tuple_names
@@ -517,7 +520,7 @@ csharp_prefer_simple_default_expression = true
 ## {
 ##     throw new System.Exception();
 ## }
-dotnet_diagnostic.IDE0035.severity = error
+dotnet_diagnostic.IDE0035.severity = warning
 
 ## Order modifiers (IDE0036)
 ## This rule lets you enforce a desired modifier sort order.
@@ -2226,7 +2229,7 @@ csharp_style_prefer_null_check_over_type_check = true
 ## Use block-scoped namespace (IDE0160)
 ## Use file-scoped namespace (IDE0161)
 ## These rules apply to namespace declarations. For IDE0161 to report violations when block-scoped namespaces are used, you must set the associated option to file_scoped.
-dotnet_diagnostic.IDE0160.severity = suggestion
+dotnet_diagnostic.IDE0160.severity = none
 dotnet_diagnostic.IDE0161.severity = warning
 
 ## Options:
@@ -2509,7 +2512,7 @@ csharp_style_conditional_delegate_call = true
 ## // Generic instance method that does not support inference.
 ## someObject.GenericMethod<int>();
 ## Generally, both of the prior declarations should be avoided so that the type argument does not have to be specified when the member is called. This results in a syntax for calling members in generics that is no different from the syntax for non-generics.
-dotnet_diagnostic.CA1000.severity = suggestion
+dotnet_diagnostic.CA1000.severity = none
 
 ## Types that own disposable fields should be disposable (CA1001)
 ## A class that declares an xref:System.IDisposable field indirectly owns an unmanaged resource. The class should implement the xref:System.IDisposable interface to dispose of the unmanaged resource that it owns once the resource is no longer in use. If the class does not directly own any unmanaged resources, it should not implement a finalizer.
@@ -2531,7 +2534,7 @@ dotnet_diagnostic.CA1003.severity = warning
 
 ## Avoid excessive parameters on generic types (CA1005)
 ## The more type parameters a generic type contains, the more difficult it is to know and remember what each type parameter represents. It is usually obvious with one type parameter, as in List<T>, and in certain cases with two type parameters, as in Dictionary<TKey, TValue>. If more than two type parameters exist, the difficulty becomes too great for most users (for example, TooManyTypeParameters<T, K, V> in C# or TooManyTypeParameters(Of T, K, V) in Visual Basic).
-dotnet_diagnostic.CA1005.severity = suggestion
+dotnet_diagnostic.CA1005.severity = none
 
 ## Enums should have zero value (CA1008)
 ## The default value of an uninitialized enumeration, just like other value types, is zero. A non-flags-attributed enumeration should define a member that has the value of zero so that the default value is a valid value of the enumeration. If appropriate, name the member 'None' (or one of the additional permitted names). Otherwise, assign zero to the most frequently used member. By default, if the value of the first enumeration member is not set in the declaration, its value is zero.
@@ -2603,7 +2606,7 @@ dotnet_diagnostic.CA1028.severity = suggestion
 ## Use events where appropriate (CA1030)
 ## This rule detects methods that have names that ordinarily would be used for events. Events follow the Observer or Publish-Subscribe design pattern; they are used when a state change in one object must be communicated to other objects. If a method gets called in response to a clearly defined state change, the method should be invoked by an event handler. Objects that call the method should raise events instead of calling the method directly.
 ## Some common examples of events are found in user interface applications where a user action such as clicking a button causes a segment of code to execute. The .NET event model is not limited to user interfaces. It should be used anywhere you must communicate state changes to one or more objects.
-dotnet_diagnostic.CA1030.severity = suggestion
+dotnet_diagnostic.CA1030.severity = none
 
 ## Do not catch general exception types (CA1031)
 ## General exceptions should not be caught.
@@ -2727,7 +2730,7 @@ dotnet_code_quality.CA1062.null_check_validation_methods = ThrowIfNull
 
 ## Implement IDisposable correctly (CA1063)
 ## All xref:System.IDisposable types should implement the Dispose pattern correctly.
-dotnet_diagnostic.CA1063.severity = warning
+dotnet_diagnostic.CA1063.severity = suggestion
 
 ## Exceptions should be public (CA1064)
 ## An internal exception is only visible inside its own internal scope. After the exception falls outside the internal scope, only the base exception can be used to catch the exception. If the internal exception is inherited from xref:System.Exception, xref:System.SystemException, or xref:System.ApplicationException, the external code will not have sufficient information to know what to do with the exception.
@@ -2776,7 +2779,7 @@ dotnet_diagnostic.CA1068.severity = warning
 ## Accidental typing mistakes, where the user accidentally typed the same constant value for multiple members.
 ##  Copy paste mistakes, where the user copied an existing member definition, then renamed the member but forgot to change the value.
 ##  Merge resolution from multiple branches, where a new member was added with a different name but the same value in different branches.
-dotnet_diagnostic.CA1069.severity = error
+dotnet_diagnostic.CA1069.severity = warning
 
 ## Do not declare event fields as virtual (CA1070)
 ## Follow these .NET design guidelines to raise base class events in derived classes. Do not declare virtual events in a base class. Overridden events in a derived class have undefined behavior. The C# compiler does not handle this correctly and it is unpredictable whether a subscriber to the derived event will actually be subscribing to the base class event.
@@ -2844,7 +2847,7 @@ dotnet_diagnostic.CA1311.severity = none
 
 ## P/Invokes should not be visible (CA1401)
 ## Methods that are marked with the xref:System.Runtime.InteropServices.DllImportAttribute attribute (or methods that are defined by using the Declare keyword in Visual Basic) use Platform Invocation Services to access unmanaged code. Such methods should not be exposed. By keeping these methods private or internal, you make sure that your library cannot be used to breach security by allowing callers access to unmanaged APIs that they could not call otherwise.
-dotnet_diagnostic.CA1401.severity = suggestion
+dotnet_diagnostic.CA1401.severity = none
 
 ## Validate platform compatibility (CA1416)
 ## .NET 5 added new attributes, xref:System.Runtime.Versioning.SupportedOSPlatformAttribute and xref:System.Runtime.Versioning.UnsupportedOSPlatformAttribute, to annotate platform-specific APIs. Both attributes can be instantiated with or without version numbers as part of the platform name. They can also be applied multiple times with different platforms.
@@ -2902,18 +2905,18 @@ dotnet_diagnostic.CA1501.severity = none
 ## A node represents a logic branch point and an edge represents a line between nodes.
 ## The rule reports a violation when the cyclomatic complexity of a method is more than 25. However, you can configure the threshold and also specify other kinds of symbols that the rule should analyze.
 ## You can learn more about code metrics at Measure complexity of managed code.
-dotnet_diagnostic.CA1502.severity = warning
+dotnet_diagnostic.CA1502.severity = none
 
 ## Avoid unmaintainable code (CA1505)
 ## The rule reports a violation when the maintainability index of a type, method, field, property, or event is less than 10. However, you can configure the threshold.
 ## The maintainability index is calculated by using the following metrics: lines of code, program volume, and cyclomatic complexity. (Program volume is a measure of the difficulty of understanding of a type or method that's based on the number of operators and operands in the code. Cyclomatic complexity is a measure of the structural complexity of the type or method. You can learn more about code metrics at Measure complexity and maintainability of managed code.
 ## A low maintainability index indicates that a type or method is probably difficult to maintain and would be a good candidate to redesign.
-dotnet_diagnostic.CA1505.severity = warning
+dotnet_diagnostic.CA1505.severity = none
 
 ## Avoid excessive class coupling (CA1506)
 ## This rule measures class coupling by counting the number of unique type references that a type, method, field, property, or event contains. The default coupling threshold is 95 for types and 40 for other symbol kinds, and the thresholds are configurable.
 ## Types, methods, and other symbols that have a high degree of class coupling can be difficult to maintain. It's a good practice to have types, methods, and other symbols that exhibit low coupling and high cohesion.
-dotnet_diagnostic.CA1506.severity = warning
+dotnet_diagnostic.CA1506.severity = none
 
 ## Use nameof in place of string (CA1507)
 ## Rule CA1507 flags the use of a string literal as an argument to a method or constructor where a nameof (NameOf in Visual Basic) expression would add maintainability. The rule fires if all of the following conditions are met:
@@ -2972,7 +2975,7 @@ dotnet_diagnostic.CA1508.severity = suggestion
 ## CA1502(Type): 4
 ## CA1502(Method): 2
 ## An invalid entry in this configuration file is flagged with the CA1509 diagnostic.
-dotnet_diagnostic.CA1509.severity = warning
+dotnet_diagnostic.CA1509.severity = none
 
 ## Do not name enum values 'Reserved' (CA1700)
 ## This rule assumes that an enumeration member that has a name that contains "reserved" is not currently used but is a placeholder to be renamed or removed in a future version. Renaming or removing a member is a breaking change. You should not expect users to ignore a member just because its name contains "reserved", nor can you rely on users to read or abide by documentation. Furthermore, because reserved members appear in object browsers and smart integrated development environments, they can cause confusion about which members are actually being used.
@@ -3100,7 +3103,7 @@ dotnet_diagnostic.CA1717.severity = suggestion
 ##  Double
 ##  Decimal
 ##  Guid
-dotnet_diagnostic.CA1720.severity = warning
+dotnet_diagnostic.CA1720.severity = suggestion
 
 ## Property names should not match get methods (CA1721)
 ## "Get" methods and properties should have names that clearly distinguish their function.
@@ -3159,7 +3162,7 @@ dotnet_diagnostic.CA1810.severity = none
 ##  Compiler-emitted array types
 ##  Types that can't be instantiated and that only define static methods.
 ## If you apply xref:System.Runtime.CompilerServices.InternalsVisibleToAttribute?displayProperty=fullName to the assembly that's being analyzed, this rule doesn't flag types that are marked as internal (Friend in Visual Basic) by default, because a field may be used by a friend assembly. To analyze the assembly anyway, see Configure code to analyze.
-dotnet_diagnostic.CA1812.severity = suggestion
+dotnet_diagnostic.CA1812.severity = none
 
 ## Avoid unsealed attributes (CA1813)
 ## .NET provides methods for retrieving custom attributes. By default, these methods search the attribute inheritance hierarchy. For example, xref:System.Attribute.GetCustomAttribute%2A?displayProperty=fullName searches for the specified attribute type or any attribute type that extends the specified attribute type. Sealing the attribute eliminates the search through the inheritance hierarchy, and can improve performance.
@@ -3176,7 +3179,7 @@ dotnet_diagnostic.CA1815.severity = warning
 ## Call GC.SuppressFinalize correctly (CA1816)
 ## The xref:System.IDisposable.Dispose%2A?displayProperty=nameWithType method lets users release resources at any time before the object becoming available for garbage collection. If the xref:System.IDisposable.Dispose%2A?displayProperty=nameWithType method is called, it frees resources of the object. This makes finalization unnecessary. xref:System.IDisposable.Dispose%2A?displayProperty=nameWithType should call xref:System.GC.SuppressFinalize%2A?displayProperty=nameWithType so the garbage collector doesn't call the finalizer of the object.
 ## To prevent derived types with finalizers from having to reimplement xref:System.IDisposable and to call it, unsealed types without finalizers should still call xref:System.GC.SuppressFinalize%2A?displayProperty=nameWithType.
-dotnet_diagnostic.CA1816.severity = suggestion
+dotnet_diagnostic.CA1816.severity = none
 
 ## Properties should not return arrays (CA1819)
 ## Arrays returned by properties are not write-protected, even if the property is read-only. To keep the array tamper-proof, the property must return a copy of the array. Typically, users won't understand the adverse performance implications of calling such a property. Specifically, they might use the property as an indexed property.
@@ -3189,7 +3192,7 @@ dotnet_diagnostic.CA1820.severity = silent
 
 ## Remove empty finalizers (CA1821)
 ## Whenever you can, avoid finalizers because of the additional performance overhead that's involved in tracking object lifetime. The garbage collector runs the finalizer before it collects the object. This means that at least two collections are required to collect the object. An empty finalizer incurs this added overhead without any benefit.
-dotnet_diagnostic.CA1821.severity = suggestion
+dotnet_diagnostic.CA1821.severity = warning
 
 ## Mark members as static (CA1822)
 ## Members that do not access instance data or call instance methods can be marked as static (Shared in Visual Basic). After you mark the methods as static, the compiler will emit nonvirtual call sites to these members. Emitting nonvirtual call sites will prevent a check at run time for each call that makes sure that the current object pointer is non-null. This can achieve a measurable performance gain for performance-sensitive code. In some cases, the failure to access the current object instance represents a correctness issue.
@@ -3472,7 +3475,7 @@ dotnet_diagnostic.CA2007.severity = suggestion
 ## For further information and detailed examples, see New TaskCreationOptions and TaskContinuationOptions in .NET Framework 4.5.
 ## [!NOTE]
 ## VSTHRD105 - Avoid method overloads that assume TaskScheduler.Current is a similar rule implemented in Microsoft.VisualStudio.Threading.Analyzers package.
-dotnet_diagnostic.CA2008.severity = suggestion
+dotnet_diagnostic.CA2008.severity = none
 
 ## Do not call ToImmutableCollection on an ImmutableCollection value (CA2009)
 ## xref:System.Collections.Immutable namespace contains types that define immutable collections. This rule analyzes the following immutable collection types:
@@ -3504,7 +3507,7 @@ dotnet_diagnostic.CA2012.severity = warning
 
 ## Do not use ReferenceEquals with value types (CA2013)
 ## When comparing values using xref:System.Object.ReferenceEquals%2A, if objA and objB are value types, they are boxed before they are passed to the xref:System.Object.ReferenceEquals%2A method. This means that even if both objA and objB represent the same instance of a value type, the xref:System.Object.ReferenceEquals%2A method nevertheless returns false, as the following example shows.
-dotnet_diagnostic.CA2013.severity = suggestion
+dotnet_diagnostic.CA2013.severity = warning
 
 ## Do not use stackalloc in loops (CA2014)
 ## The C# stackalloc expression allocates memory from the current stack frame, and that memory may not be released until the current method call returns. If stackalloc is used in a loop, it can lead to stack overflows due to exhausting the stack memory.
@@ -3678,7 +3681,7 @@ dotnet_diagnostic.CA2218.severity = warning
 ## When an exception is raised in an exception clause, it greatly increases the difficulty of debugging.
 ## When an exception is raised in a finally or fault clause, the new exception hides the active exception, if present. This makes the original error hard to detect and debug.
 ## When an exception is raised in a filter clause, the runtime silently catches the exception, and causes the filter to evaluate to false. There is no way to tell the difference between the filter evaluating to false and an exception being throw from a filter. This makes it hard to detect and debug errors in the filter's logic.
-dotnet_diagnostic.CA2219.severity = suggestion
+dotnet_diagnostic.CA2219.severity = warning
 
 ## Override Equals on overloading operator equals (CA2224)
 ## The equality operator is intended to be a syntactically convenient way to access the functionality of the xref:System.Object.Equals%2A method. If you implement the equality operator, its logic must be identical to that of xref:System.Object.Equals%2A.
@@ -3740,7 +3743,7 @@ dotnet_diagnostic.CA2237.severity = none
 
 ## Provide correct arguments to formatting methods (CA2241)
 ## The arguments to methods such as xref:System.Console.WriteLine%2A, xref:System.Console.Write%2A, and xref:System.String.Format%2A consist of a format string followed by several xref:System.Object?displayProperty=fullName instances. The format string consists of text and embedded format items of the form {index[,alignment][:formatString]}. 'index' is a zero-based integer that indicates which of the objects to format. If an object does not have a corresponding index in the format string, the object is ignored. If the object specified by 'index' does not exist, a xref:System.FormatException?displayProperty=fullName is thrown at run time.
-dotnet_diagnostic.CA2241.severity = suggestion
+dotnet_diagnostic.CA2241.severity = none
 
 ## Test for NaN correctly (CA2242)
 ## xref:System.Double.NaN?displayProperty=fullName, which represents a value that's not a number, results when an arithmetic operation is undefined. Any expression that tests for equality between a value and xref:System.Double.NaN?displayProperty=fullName always returns false. Any expression that tests for inequality (!= in C#) between a value and xref:System.Double.NaN?displayProperty=fullName always returns true.
@@ -3750,7 +3753,7 @@ dotnet_diagnostic.CA2242.severity = warning
 ## Since attributes are derived from xref:System.Attribute?displayProperty=fullName, and attributes are used at compile time, only constant values can be passed to their constructors. Attribute parameters that must represent URLs, GUIDs, and Versions cannot be typed as xref:System.Uri?displayProperty=fullName, xref:System.Guid?displayProperty=fullName, and xref:System.Version?displayProperty=fullName, because these types cannot be represented as constants. Instead, they must be represented by strings.
 ## Because the parameter is typed as a string, it is possible that an incorrectly formatted parameter could be passed at compile time.
 ## This rule uses a naming heuristic to find parameters that represent a uniform resource identifier (URI), a Globally Unique Identifier (GUID), or a Version, and verifies that the passed value is correct.
-dotnet_diagnostic.CA2243.severity = suggestion
+dotnet_diagnostic.CA2243.severity = none
 
 ## Do not duplicate indexed element initializations (CA2244)
 ## Object initializers let you assign values to any accessible fields or properties of an object at creation time without having to invoke a constructor followed by lines of assignment statements.
@@ -3802,7 +3805,7 @@ dotnet_diagnostic.CA2251.severity = warning
 ## The following image shows an example of the CA2252 diagnostic.
 ## Code editor with CA2252 warning.
 ## Here, Lib is a preview type that's constructed in the Main method. Main itself is not annotated as a preview method, so diagnostics are produced on the two constructors calls inside Main.
-dotnet_diagnostic.CA2252.severity = suggestion
+dotnet_diagnostic.CA2252.severity = none
 
 ## Named placeholders should not be numeric values (CA2253)
 ## Named placeholders in the logging message template should not be comprised of only numeric characters.
@@ -3859,130 +3862,130 @@ dotnet_diagnostic.CA2260.severity = warning
 ## [!INCLUDEinsecure-deserializers-description]
 ## This rule finds xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter?displayProperty=nameWithType deserialization method calls or references. If you want to deserialize only when the xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Binder property is set to restrict types, disable this rule and enable rules CA2301 and CA2302 instead. Limiting which types can be deserialized can help mitigate against known remote code execution attacks, but your deserialization will still be vulnerable to denial of service attacks.
 ## [!INCLUDEbinaryformatter]
-dotnet_diagnostic.CA2300.severity = error
+dotnet_diagnostic.CA2300.severity = none
 
 ## Do not call BinaryFormatter.Deserialize without first setting BinaryFormatter.Binder (CA2301)
 ## [!INCLUDEinsecure-deserializers-description]
 ## This rule finds xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter?displayProperty=nameWithType deserialization method calls or references, when xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter doesn't have its xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Binder set. If you want to disallow any deserialization with xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter regardless of the xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Binder property, disable this rule and CA2302, and enable rule CA2300.
-dotnet_diagnostic.CA2301.severity = error
+dotnet_diagnostic.CA2301.severity = none
 
 ## Ensure BinaryFormatter.Binder is set before calling BinaryFormatter.Deserialize (CA2302)
 ## [!INCLUDEinsecure-deserializers-description]
 ## This rule finds xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter?displayProperty=nameWithType deserialization method calls or references when the xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Binder might be null. If you want to disallow any deserialization with xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter regardless of the xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Binder property, disable this rule and CA2301, and enable rule CA2300.
-dotnet_diagnostic.CA2302.severity = error
+dotnet_diagnostic.CA2302.severity = none
 
 ## Do not use insecure deserializer LosFormatter (CA2305)
 ## [!INCLUDEinsecure-deserializers-description]
 ## This rule finds xref:System.Web.UI.LosFormatter?displayProperty=nameWithType deserialization method calls or references.
 ## LosFormatter is insecure and can't be made secure. For more information, see the BinaryFormatter security guide.
-dotnet_diagnostic.CA2305.severity = error
+dotnet_diagnostic.CA2305.severity = none
 
 ## Do not use insecure deserializer NetDataContractSerializer (CA2310)
 ## [!INCLUDEinsecure-deserializers-description]
 ## This rule finds xref:System.Runtime.Serialization.NetDataContractSerializer?displayProperty=nameWithType deserialization method calls or references. If you want to deserialize only when the xref:System.Runtime.Serialization.NetDataContractSerializer.Binder property is set to restrict types, disable this rule and enable rules CA2311 and CA2312 instead. Limiting which types can be deserialized can help mitigate against known remote code execution attacks, but your deserialization will still be vulnerable to denial of service attacks.
 ## NetDataContractSerializer is insecure and can't be made secure. For more information, see the BinaryFormatter security guide.
-dotnet_diagnostic.CA2310.severity = error
+dotnet_diagnostic.CA2310.severity = none
 
 ## Do not deserialize without first setting NetDataContractSerializer.Binder (CA2311)
 ## [!INCLUDEinsecure-deserializers-description]
 ## This rule finds xref:System.Runtime.Serialization.NetDataContractSerializer?displayProperty=nameWithType deserialization method calls or references, when xref:System.Runtime.Serialization.NetDataContractSerializer doesn't have its xref:System.Runtime.Serialization.NetDataContractSerializer.Binder set. If you want to disallow any deserialization with xref:System.Runtime.Serialization.NetDataContractSerializer regardless of the xref:System.Runtime.Serialization.NetDataContractSerializer.Binder property, disable this rule and CA2312, and enable rule CA2310.
-dotnet_diagnostic.CA2311.severity = error
+dotnet_diagnostic.CA2311.severity = none
 
 ## Ensure NetDataContractSerializer.Binder is set before deserializing (CA2312)
 ## [!INCLUDEinsecure-deserializers-description]
 ## This rule finds xref:System.Runtime.Serialization.NetDataContractSerializer?displayProperty=nameWithType deserialization method calls or references when the xref:System.Runtime.Serialization.NetDataContractSerializer.Binder might be null. If you want to disallow any deserialization with xref:System.Runtime.Serialization.NetDataContractSerializer regardless of the xref:System.Runtime.Serialization.NetDataContractSerializer.Binder property, disable this rule and CA2311, and enable rule CA2310.
 ## NetDataContractSerializer is insecure and can't be made secure. For more information, see the BinaryFormatter security guide.
-dotnet_diagnostic.CA2312.severity = error
+dotnet_diagnostic.CA2312.severity = none
 
 ## Do not use insecure deserializer ObjectStateFormatter (CA2315)
 ## [!INCLUDEinsecure-deserializers-description]
 ## This rule finds xref:System.Web.UI.ObjectStateFormatter?displayProperty=nameWithType deserialization method calls or references.
-dotnet_diagnostic.CA2315.severity = error
+dotnet_diagnostic.CA2315.severity = none
 
 ## Do not deserialize with JavaScriptSerializer using a SimpleTypeResolver (CA2321)
 ## [!INCLUDEinsecure-deserializers-description]
 ## This rule finds xref:System.Web.Script.Serialization.JavaScriptSerializer?displayProperty=nameWithType deserialization method calls or references, after initializing the xref:System.Web.Script.Serialization.JavaScriptSerializer with a xref:System.Web.Script.Serialization.SimpleTypeResolver?displayProperty=nameWithType.
-dotnet_diagnostic.CA2321.severity = error
+dotnet_diagnostic.CA2321.severity = none
 
 ## Ensure JavaScriptSerializer is not initialized with SimpleTypeResolver before deserializing (CA2322)
 ## [!INCLUDEinsecure-deserializers-description]
 ## This rule finds xref:System.Web.Script.Serialization.JavaScriptSerializer?displayProperty=nameWithType deserialization method calls or references, when the xref:System.Web.Script.Serialization.JavaScriptSerializer may have been initialized with a xref:System.Web.Script.Serialization.SimpleTypeResolver?displayProperty=nameWithType.
-dotnet_diagnostic.CA2322.severity = error
+dotnet_diagnostic.CA2322.severity = none
 
 ## Do not use TypeNameHandling values other than None (CA2326)
 ## [!INCLUDEinsecure-deserializers-description]
 ## This rule finds Newtonsoft.Json.TypeNameHandling values other than None. If you want to deserialize only when a Newtonsoft.Json.Serialization.ISerializationBinder is specified to restrict deserialized types, disable this rule and enable rules CA2327, CA2328, CA2329, and CA2330 instead.
-dotnet_diagnostic.CA2326.severity = error
+dotnet_diagnostic.CA2326.severity = none
 
 ## Do not use insecure JsonSerializerSettings (CA2327)
 ## [!INCLUDEinsecure-deserializers-description]
 ## This rule finds Newtonsoft.Json.JsonSerializerSettings instances that are configured to deserialize types specified from input, but not configured to restrict deserialized types with a Newtonsoft.Json.Serialization.ISerializationBinder. If you want to disallow deserialization of types specified from input completely, disable rules CA2327, CA2328, CA2329, and CA2330, and enable rule CA2326 instead.
-dotnet_diagnostic.CA2327.severity = error
+dotnet_diagnostic.CA2327.severity = none
 
 ## Ensure that JsonSerializerSettings are secure (CA2328)
 ## [!INCLUDEinsecure-deserializers-description]
 ## This rule finds Newtonsoft.Json.JsonSerializerSettings instances that might be configured to deserialize types specified from input, but may not be configured to restrict deserialized types with a Newtonsoft.Json.Serialization.ISerializationBinder. If you want to disallow deserialization of types specified from input completely, disable rules CA2327, CA2328, CA2329, and CA2330, and enable rule CA2326 instead.
-dotnet_diagnostic.CA2328.severity = error
+dotnet_diagnostic.CA2328.severity = none
 
 ## Do not deserialize with JsonSerializer using an insecure configuration (CA2329)
 ## [!INCLUDEinsecure-deserializers-description]
 ## This rule finds Newtonsoft.Json.JsonSerializer instances that are configured to deserialize types specified from input, but not configured to restrict deserialized types with a Newtonsoft.Json.Serialization.ISerializationBinder. If you want to disallow deserialization of types specified from input completely, disable rules CA2327, CA2328, CA2329, and CA2330, and enable rule CA2326 instead.
-dotnet_diagnostic.CA2329.severity = error
+dotnet_diagnostic.CA2329.severity = none
 
 ## Ensure that JsonSerializer has a secure configuration when deserializing (CA2330)
 ## [!INCLUDEinsecure-deserializers-description]
 ## This rule finds Newtonsoft.Json.JsonSerializer instances that might be configured to deserialize types specified from input, but may not be configured to restrict deserialized types with a Newtonsoft.Json.Serialization.ISerializationBinder. If you want to disallow deserialization of types specified from input completely, disable rules CA2327, CA2328, CA2329, and CA2330, and enable rule CA2326 instead.
-dotnet_diagnostic.CA2330.severity = error
+dotnet_diagnostic.CA2330.severity = none
 
 ## Ensure DataTable.ReadXml()'s input is trusted (CA2350)
 ## When deserializing a xref:System.Data.DataTable with untrusted input, an attacker can craft malicious input to perform a denial of service attack. There may be unknown remote code execution vulnerabilities.
 ## For more information, see DataSet and DataTable security guidance.
-dotnet_diagnostic.CA2350.severity = error
+dotnet_diagnostic.CA2350.severity = none
 
 ## Ensure DataSet.ReadXml()'s input is trusted (CA2351)
 ## When deserializing a xref:System.Data.DataSet with untrusted input, an attacker can craft malicious input to perform a denial of service attack. There may be unknown remote code execution vulnerabilities.
 ## For more information, see DataSet and DataTable security guidance.
-dotnet_diagnostic.CA2351.severity = error
+dotnet_diagnostic.CA2351.severity = none
 
 ## Unsafe DataSet or DataTable in serializable type can be vulnerable to remote code execution attacks (CA2352)
 ## When deserializing untrusted input with xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter and the deserialized object graph contains a xref:System.Data.DataSet or xref:System.Data.DataTable, an attacker can craft a malicious payload to perform a remote code execution attack.
 ## This rule finds types which are insecure when deserialized. If your code doesn't deserialize the types found, then you don't have a deserialization vulnerability.
 ## For more information, see DataSet and DataTable security guidance.
-dotnet_diagnostic.CA2352.severity = error
+dotnet_diagnostic.CA2352.severity = none
 
 ## Unsafe DataSet or DataTable in serializable type (CA2353)
 ## When deserializing untrusted input and the deserialized object graph contains a xref:System.Data.DataSet or xref:System.Data.DataTable, an attacker can craft a malicious payload to perform a denial of service attack. There may be unknown remote code execution vulnerabilities.
 ## This rule finds types which are insecure when deserialized. If your code doesn't deserialize the types found, then you don't have a deserialization vulnerability.
 ## For more information, see DataSet and DataTable security guidance.
-dotnet_diagnostic.CA2353.severity = error
+dotnet_diagnostic.CA2353.severity = none
 
 ## Unsafe DataSet or DataTable in deserialized object graph can be vulnerable to remote code execution attack (CA2354)
 ## When deserializing untrusted input with xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter and the deserialized object graph contains a xref:System.Data.DataSet or xref:System.Data.DataTable, an attacker can craft a malicious payload to perform a remote code execution attack.
 ## For more information, see DataSet and DataTable security guidance.
-dotnet_diagnostic.CA2354.severity = error
+dotnet_diagnostic.CA2354.severity = none
 
 ## Unsafe DataSet or DataTable in deserialized object graph (CA2355)
 ## When deserializing untrusted input with xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter and the deserialized object graph contains a xref:System.Data.DataSet or xref:System.Data.DataTable, an attacker can craft a malicious payload to perform a denial of service attack. There may be unknown remote code execution vulnerabilities.
 ## For more information, see DataSet and DataTable security guidance.
-dotnet_diagnostic.CA2355.severity = error
+dotnet_diagnostic.CA2355.severity = none
 
 ## Unsafe DataSet or DataTable type in web deserialized object graph (CA2356)
 ## When deserializing untrusted input and the deserialized object graph contains a xref:System.Data.DataSet or xref:System.Data.DataTable, an attacker can craft a malicious payload to perform a denial of service attack. There may be unknown remote code execution vulnerabilities.
 ## For more information, see DataSet and DataTable security guidance.
-dotnet_diagnostic.CA2356.severity = error
+dotnet_diagnostic.CA2356.severity = none
 
 ## Ensure autogenerated class containing DataSet.ReadXml() is not used with untrusted data (CA2361)
 ## When deserializing a xref:System.Data.DataSet with untrusted input, an attacker can craft malicious input to perform a denial of service attack. There may be unknown remote code execution vulnerabilities.
 ## This rule is like CA2351, but for autogenerated code for an in-memory representation of data within a GUI application. Usually, these autogenerated classes aren't deserialized from untrusted input. Your application's usage may vary.
 ## For more information, see DataSet and DataTable security guidance.
-dotnet_diagnostic.CA2361.severity = error
+dotnet_diagnostic.CA2361.severity = none
 
 ## Unsafe DataSet or DataTable in autogenerated serializable type can be vulnerable to remote code execution attacks (CA2362)
 ## When deserializing untrusted input with xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter and the deserialized object graph contains a xref:System.Data.DataSet or xref:System.Data.DataTable, an attacker can craft a malicious payload to perform a remote code execution attack.
 ## This rule is like CA2352, but for autogenerated code for an in-memory representation of data within a GUI application. Usually, these autogenerated classes aren't deserialized from untrusted input. Your application's usage may vary.
 ## This rule finds types which are insecure when deserialized. If your code doesn't deserialize the types found, then you don't have a deserialization vulnerability.
 ## For more information, see DataSet and DataTable security guidance.
-dotnet_diagnostic.CA2362.severity = error
+dotnet_diagnostic.CA2362.severity = none
 
 ## Review code for SQL injection vulnerabilities (CA3001)
 ## When working with untrusted input and SQL commands, be mindful of SQL injection attacks. An SQL injection attack can execute malicious SQL commands, compromising the security and integrity of your application. Typical techniques include using a single quotation mark or apostrophe for delimiting literal strings, two dashes for a comment, and a semicolon for the end of a statement. For more information, see SQL Injection.
@@ -3991,7 +3994,7 @@ dotnet_diagnostic.CA2362.severity = error
 ## This rule can't track data across assemblies. For example, if one assembly reads the HTTP request input and then passes it to another assembly that executes the SQL command, this rule won't produce a warning.
 ## [!NOTE]
 ## There is a configurable limit to how deep this rule will analyze data flow across method calls. See Analyzer Configuration for how to configure the limit in an EditorConfig file.
-dotnet_diagnostic.CA3001.severity = error
+dotnet_diagnostic.CA3001.severity = none
 
 ## Review code for XSS vulnerabilities (CA3002)
 ## When working with untrusted input from web requests, be mindful of cross-site scripting (XSS) attacks. An XSS attack injects untrusted input into raw HTML output, allowing the attacker to execute malicious scripts or maliciously modify content in your web page. A typical technique is putting <script> elements with malicious code in input. For more information, see OWASP's XSS.
@@ -4000,7 +4003,7 @@ dotnet_diagnostic.CA3001.severity = error
 ## This rule can't track data across assemblies. For example, if one assembly reads the HTTP request input and then passes it to another assembly that outputs raw HTML, this rule won't produce a warning.
 ## [!NOTE]
 ## There is a configurable limit to how deep this rule will analyze data flow across method calls. See Analyzer Configuration for how to configure the limit in an EditorConfig file.
-dotnet_diagnostic.CA3002.severity = error
+dotnet_diagnostic.CA3002.severity = none
 
 ## Review code for file path injection vulnerabilities (CA3003)
 ## When working with untrusted input from web requests, be mindful of using user-controlled input when specifying paths to files. An attacker may be able to read an unintended file, resulting in information disclosure of sensitive data. Or, an attacker may be able to write to an unintended file, resulting in unauthorized modification of sensitive data or compromising the server's security. A common attacker technique is Path Traversal to access files outside of the intended directory.
@@ -4009,7 +4012,7 @@ dotnet_diagnostic.CA3002.severity = error
 ## This rule can't track data across assemblies. For example, if one assembly reads the HTTP request input and then passes it to another assembly that writes to a file, this rule won't produce a warning.
 ## [!NOTE]
 ## There is a configurable limit to how deep this rule will analyze data flow across method calls. See Analyzer Configuration for how to configure the limit in an EditorConfig file.
-dotnet_diagnostic.CA3003.severity = error
+dotnet_diagnostic.CA3003.severity = none
 
 ## Review code for information disclosure vulnerabilities (CA3004)
 ## Disclosing exception information gives attackers insight into the internals of your application, which can help attackers find other vulnerabilities to exploit.
@@ -4018,7 +4021,7 @@ dotnet_diagnostic.CA3003.severity = error
 ## This rule can't track data across assemblies. For example, if one assembly catches an exception and then passes it to another assembly that outputs the exception, this rule won't produce a warning.
 ## [!NOTE]
 ## There is a configurable limit to how deep this rule will analyze data flow across method calls. For information about how to configure the limit in an EditorConfig file, see Analyzer Configuration.
-dotnet_diagnostic.CA3004.severity = error
+dotnet_diagnostic.CA3004.severity = none
 
 ## Review code for LDAP injection vulnerabilities (CA3005)
 ## When working with untrusted input, be mindful of Lightweight Directory Access Protocol (LDAP) injection attacks. An attacker can potentially run malicious LDAP statements against information directories. Applications that use user input to construct dynamic LDAP statements to access directory services are particularly vulnerable.
@@ -4027,7 +4030,7 @@ dotnet_diagnostic.CA3004.severity = error
 ## This rule can't track data across assemblies. For example, if one assembly reads the HTTP request input and then passes it to another assembly that executes an LDAP statement, this rule won't produce a warning.
 ## [!NOTE]
 ## There is a configurable limit to how deep this rule will analyze data flow across method calls. See Analyzer Configuration for how to configure the limit in an EditorConfig file.
-dotnet_diagnostic.CA3005.severity = error
+dotnet_diagnostic.CA3005.severity = none
 
 ## Review code for process command injection vulnerabilities (CA3006)
 ## When working with untrusted input, be mindful of command injection attacks. A command injection attack can execute malicious commands on the underlying operating system, compromising the security and integrity of your server.
@@ -4036,7 +4039,7 @@ dotnet_diagnostic.CA3005.severity = error
 ## This rule can't track data across assemblies. For example, if one assembly reads the HTTP request input and then passes it to another assembly that starts a process, this rule won't produce a warning.
 ## [!NOTE]
 ## There is a configurable limit to how deep this rule will analyze data flow across method calls. See Analyzer Configuration for how to configure the limit in an EditorConfig file.
-dotnet_diagnostic.CA3006.severity = error
+dotnet_diagnostic.CA3006.severity = none
 
 ## Review code for open redirect vulnerabilities (CA3007)
 ## When working with untrusted input, be mindful of open redirect vulnerabilities. An attacker can exploit an open redirect vulnerability to use your website to give the appearance of a legitimate URL, but redirect an unsuspecting visitor to a phishing or other malicious webpage.
@@ -4045,7 +4048,7 @@ dotnet_diagnostic.CA3006.severity = error
 ## This rule can't track data across assemblies. For example, if one assembly reads the HTTP request input and then passes it to another assembly that responds with an HTTP redirect, this rule won't produce a warning.
 ## [!NOTE]
 ## There is a configurable limit to how deep this rule will analyze data flow across method calls. See Analyzer Configuration for how to configure the limit in an EditorConfig file.
-dotnet_diagnostic.CA3007.severity = error
+dotnet_diagnostic.CA3007.severity = none
 
 ## Review code for XPath injection vulnerabilities (CA3008)
 ## When working with untrusted input, be mindful of XPath injection attacks. Constructing XPath queries using untrusted input may allow an attacker to maliciously manipulate the query to return an unintended result, and possibly disclose the contents of the queried XML.
@@ -4054,7 +4057,7 @@ dotnet_diagnostic.CA3007.severity = error
 ## This rule can't track data across assemblies. For example, if one assembly reads the HTTP request input and then passes it to another assembly that performs an XPath query, this rule won't produce a warning.
 ## [!NOTE]
 ## There is a configurable limit to how deep this rule will analyze data flow across method calls. See Analyzer Configuration for how to configure the limit in an EditorConfig file.
-dotnet_diagnostic.CA3008.severity = error
+dotnet_diagnostic.CA3008.severity = none
 
 ## Review code for XML injection vulnerabilities (CA3009)
 ## When working with untrusted input, be mindful of XML injection attacks. An attacker can use XML injection to insert special characters into an XML document, making the document invalid XML. Or, an attacker could maliciously insert XML nodes of their choosing.
@@ -4063,7 +4066,7 @@ dotnet_diagnostic.CA3008.severity = error
 ## This rule can't track data across assemblies. For example, if one assembly reads the HTTP request input and then passes it to another assembly that writes raw XML, this rule won't produce a warning.
 ## [!NOTE]
 ## There is a configurable limit to how deep this rule will analyze data flow across method calls. See Analyzer Configuration for how to configure the limit in an EditorConfig file.
-dotnet_diagnostic.CA3009.severity = error
+dotnet_diagnostic.CA3009.severity = none
 
 ## Review code for XAML injection vulnerabilities (CA3010)
 ## When working with untrusted input, be mindful of XAML injection attacks. XAML is a markup language that directly represents object instantiation and execution. That means elements created in XAML can interact with system resources (for example, network access and file system IO). If an attacker can control the input to a xref:System.Windows.Markup.XamlReader?displayProperty=nameWithType Load method call, then the attacker can execute code.
@@ -4072,7 +4075,7 @@ dotnet_diagnostic.CA3009.severity = error
 ## This rule can't track data across assemblies. For example, if one assembly reads the HTTP request input and then passes it to another assembly that loads XAML, this rule won't produce a warning.
 ## [!NOTE]
 ## There is a configurable limit to how deep this rule will analyze data flow across method calls. See Analyzer Configuration for how to configure the limit in an EditorConfig file.
-dotnet_diagnostic.CA3010.severity = error
+dotnet_diagnostic.CA3010.severity = none
 
 ## Review code for DLL injection vulnerabilities (CA3011)
 ## When working with untrusted input, be mindful of loading untrusted code. If your web application loads untrusted code, an attacker may be able to inject malicious DLLs into your process and execute malicious code.
@@ -4081,7 +4084,7 @@ dotnet_diagnostic.CA3010.severity = error
 ## This rule can't track data across assemblies. For example, if one assembly reads the HTTP request input and then passes it to another assembly that loads an assembly, this rule won't produce a warning.
 ## [!NOTE]
 ## There is a configurable limit to how deep this rule will analyze data flow across method calls. See Analyzer Configuration for how to configure the limit in an EditorConfig file.
-dotnet_diagnostic.CA3011.severity = error
+dotnet_diagnostic.CA3011.severity = none
 
 ## Review code for regex injection vulnerabilities (CA3012)
 ## When working with untrusted input, be mindful of regex injection attacks. An attacker can use regex injection to maliciously modify a regular expression, to make the regex match unintended results, or to make the regex consume excessive CPU resulting in a Denial of Service attack.
@@ -4090,11 +4093,11 @@ dotnet_diagnostic.CA3011.severity = error
 ## This rule can't track data across assemblies. For example, if one assembly reads the HTTP request input and then passes it to another assembly that creates a regular expression, this rule won't produce a warning.
 ## [!NOTE]
 ## There is a configurable limit to how deep this rule will analyze data flow across method calls. See Analyzer Configuration for how to configure the limit in an EditorConfig file.
-dotnet_diagnostic.CA3012.severity = error
+dotnet_diagnostic.CA3012.severity = none
 
 ## Do not add schema by URL (CA3061)
 ## Do not use the unsafe overload of the Add method because it may cause dangerous external references.
-dotnet_diagnostic.CA3061.severity = error
+dotnet_diagnostic.CA3061.severity = none
 
 ## Insecure DTD Processing (CA3075)
 ## A Document Type Definition (DTD) is one of two ways an XML parser can determine the validity of a document, as defined by the  World Wide Web Consortium (W3C) Extensible Markup Language (XML) 1.0. This rule seeks properties and instances where untrusted data is accepted to warn developers about potential Information Disclosure threats or Denial of Service (DoS) attacks. This rule triggers when:
@@ -4105,30 +4108,30 @@ dotnet_diagnostic.CA3061.severity = error
 ##  The xref:System.Xml.XmlReader.Create%2A?displayProperty=nameWithType method is invoked with an insecure xref:System.Xml.XmlReaderSettings instance or no instance at all.
 ##  xref:System.Xml.XmlReader is created with insecure default settings or values.
 ## In each of these cases, the outcome is the same: the contents from either the file system or network shares from the machine where the XML is processed will be exposed to the attacker, or DTD processing can be used as a DoS vector.
-dotnet_diagnostic.CA3075.severity = error
+dotnet_diagnostic.CA3075.severity = none
 
 ## Insecure XSLT Script Execution (CA3076)
 ## XSLT is a World Wide Web Consortium (W3C) standard for transforming XML data. XSLT is typically used to write style sheets to transform XML data to other formats such as HTML, fixed-length text, comma-separated text, or a different XML format. Although prohibited by default, you may choose to enable it for your project.
 ## To ensure you're not exposing an attack surface, this rule triggers whenever the XslCompiledTransform.xref:System.Xml.Xsl.XslCompiledTransform.Load%2A receives insecure combination instances of xref:System.Xml.Xsl.XsltSettings and xref:System.Xml.XmlResolver, which allows malicious script processing.
-dotnet_diagnostic.CA3076.severity = error
+dotnet_diagnostic.CA3076.severity = none
 
 ## Insecure Processing in API Design, XML Document and XML Text Reader (CA3077)
 ## A Document Type Definition (DTD) is one of two ways an XML parser can determine the validity of a document, as defined by the  World Wide Web Consortium (W3C) Extensible Markup Language (XML) 1.0. This rule seeks properties and instances where untrusted data is accepted to warn developers about potential Information Disclosure threats, which may lead to Denial of Service (DoS) attacks. This rule triggers when:
 ## xref:System.Xml.XmlDocument or xref:System.Xml.XmlTextReader classes use default resolver values for DTD processing    .
 ##  No constructor is defined for the XmlDocument or XmlTextReader derived classes or no secure value is used for xref:System.Xml.XmlResolver.
-dotnet_diagnostic.CA3077.severity = error
+dotnet_diagnostic.CA3077.severity = none
 
 ## Mark verb handlers with ValidateAntiForgeryToken (CA3147)
 ## When designing an ASP.NET MVC controller, be mindful of cross-site request forgery attacks. A cross-site request forgery attack can send malicious requests from an authenticated user to your ASP.NET MVC controller. For more information, see XSRF/CSRF prevention in ASP.NET MVC and web pages.
 ## This rule checks that ASP.NET MVC controller action methods either:
 ## Have the ValidateAntiforgeryTokenAttribute and specify allowed HTTP verbs, not including HTTP GET.
 ##  Specify HTTP GET as an allowed verb.
-dotnet_diagnostic.CA3147.severity = error
+dotnet_diagnostic.CA3147.severity = none
 
 ## Do Not Use Weak Cryptographic Algorithms (CA5350)
 ## Weak encryption algorithms and hashing functions are used today for a number of reasons, but they should not be used to guarantee the confidentiality of the data they protect.
 ## The rule triggers when it finds 3DES, SHA1 or RIPEMD160 algorithms in the code and throws a warning to the user.
-dotnet_diagnostic.CA5350.severity = error
+dotnet_diagnostic.CA5350.severity = none
 
 ## Do Not Use Broken Cryptographic Algorithms (CA5351)
 ## Broken cryptographic algorithms are not  considered secure and their use should be discouraged. The MD5 hash algorithm is susceptible to known collision attacks, though the specific vulnerability will vary based on the context of use.  Hashing algorithms used to ensure data integrity (for example, file signature or digital certificate) are particularly vulnerable.  In this context, attackers could generate two separate pieces of data, such that benign data can be substituted with malicious data, without changing the hash value or invalidating an associated digital signature.
@@ -4136,53 +4139,53 @@ dotnet_diagnostic.CA5350.severity = error
 ## xref:System.Security.Cryptography.DES encryption contains a small key size, which could be brute-forced in less than a day.
 ##  xref:System.Security.Cryptography.RC2 encryption is susceptible to a related-key attack, where the attacker finds mathematical relationships between all key values.
 ## This rule triggers when it finds any of the above cryptographic functions in source code and throws a warning to the user.
-dotnet_diagnostic.CA5351.severity = error
+dotnet_diagnostic.CA5351.severity = none
 
 ## Do Not Use Unsafe Cipher Modes (CA5358)
 ## These modes are vulnerable to attacks and may cause exposure of sensitive information. For example, using ECB to encrypt a plaintext block always produces a same cipher text, so it can easily tell if two encrypted messages are identical. Using approved modes can avoid these unnecessary risks.
-dotnet_diagnostic.CA5358.severity = error
+dotnet_diagnostic.CA5358.severity = none
 
 ## Do not disable certificate validation (CA5359)
 ## A certificate can help authenticate the identity of the server. Clients should validate the server certificate to ensure requests are sent to the intended server. If the xref:System.Net.ServicePointManager.ServerCertificateValidationCallback?displayProperty=nameWithType always returns true, then by default any certificate will pass validation for all outgoing HTTPS requests.
-dotnet_diagnostic.CA5359.severity = error
+dotnet_diagnostic.CA5359.severity = none
 
 ## Do not call dangerous methods in deserialization (CA5360)
 ## Insecure deserialization is a vulnerability which occurs when untrusted data is used to abuse the logic of an application, inflict a Denial-of-Service (DoS) attack, or even execute arbitrary code upon it being deserialized. It's frequently possible for malicious users to abuse these deserialization features when the application is deserializing untrusted data which is under their control. Specifically, invoke dangerous methods in the process of deserialization. Successful insecure deserialization attacks could allow an attacker to carry out attacks such as DoS attacks, authentication bypasses, and remote code execution.
-dotnet_diagnostic.CA5360.severity = error
+dotnet_diagnostic.CA5360.severity = none
 
 ## Do not disable SChannel use of strong crypto (CA5361)
 ## Setting Switch.System.Net.DontEnableSchUseStrongCrypto to true weakens the cryptography used in outgoing Transport Layer Security (TLS) connections. Weaker cryptography can compromise the confidentiality of communication between your application and the server, making it easier for attackers to eavesdrop sensitive data. For more information, see Transport Layer Security (TLS) best practices with .NET Framework.
-dotnet_diagnostic.CA5361.severity = error
+dotnet_diagnostic.CA5361.severity = none
 
 ## Potential reference cycle in deserialized object graph (CA5362)
 ## If deserializing untrusted data, then any code processing the deserialized object graph needs to handle reference cycles without going into infinite loops. This includes both code that's part of a deserialization callback and code that processes the object graph after deserialization completed. Otherwise, an attacker could perform a Denial-of-Service attack with malicious data containing a reference cycle.
 ## This rule doesn't necessarily mean there's a vulnerability, but just flags potential reference cycles in deserialized object graphs.
-dotnet_diagnostic.CA5362.severity = error
+dotnet_diagnostic.CA5362.severity = none
 
 ## Do not disable request validation (CA5363)
 ## Request validation is a feature in ASP.NET that examines HTTP requests and determines whether they contain potentially dangerous content that can lead to injection attacks, including cross-site-scripting.
-dotnet_diagnostic.CA5363.severity = error
+dotnet_diagnostic.CA5363.severity = none
 
 ## Do not use deprecated security protocols (CA5364)
 ## Transport Layer Security (TLS) secures communication between computers, most commonly with Hypertext Transfer Protocol Secure (HTTPS). Older protocol versions of TLS are less secure than TLS 1.2 and TLS 1.3 and are more likely to have new vulnerabilities. Avoid older protocol versions to minimize risk. For guidance on identifying and removing deprecated protocol versions, see Solving the TLS 1.0 Problem, 2nd Edition.
-dotnet_diagnostic.CA5364.severity = error
+dotnet_diagnostic.CA5364.severity = none
 
 ## Do Not Disable HTTP Header Checking (CA5365)
 ## HTTP header checking enables encoding of the carriage return and newline characters, \r and \n, that are found in response headers. This encoding can help to avoid injection attacks that exploit an application that echoes untrusted data contained in the header.
-dotnet_diagnostic.CA5365.severity = error
+dotnet_diagnostic.CA5365.severity = none
 
 ## Use XmlReader For DataSet Read XML (CA5366)
 ## Using a xref:System.Data.DataSet?displayProperty=nameWithType to read XML with untrusted data may load dangerous external references, which should be restricted by using an xref:System.Xml.XmlReader with a secure resolver or with DTD processing disabled.
-dotnet_diagnostic.CA5366.severity = error
+dotnet_diagnostic.CA5366.severity = none
 
 ## Do not serialize types with pointer fields (CA5367)
 ## This rule checks whether there???s a serializable class with a pointer field or property. Members that can???t be serialized can be a pointer, such as static members or fields marked with xref:System.NonSerializedAttribute?displayProperty=nameWithType.
-dotnet_diagnostic.CA5367.severity = error
+dotnet_diagnostic.CA5367.severity = none
 
 ## Set ViewStateUserKey For Classes Derived From Page (CA5368)
 ## When designing an ASP.NET Web Form, be mindful of cross-site request forgery (CSRF) attacks. A CSRF attack can send malicious requests from an authenticated user to your ASP.NET Web Form.
 ## One way of protecting against CSRF attacks in ASP.NET Web Form is by setting a page's xref:System.Web.UI.Page.ViewStateUserKey to a string that is unpredictable and unique to a session. For more information, see Take Advantage of ASP.NET Built-in Features to Fend Off Web Attacks.
-dotnet_diagnostic.CA5368.severity = error
+dotnet_diagnostic.CA5368.severity = none
 
 ## Use XmlReader for Deserialize (CA5369)
 ## Processing untrusted DTD and XML schemas may enable loading dangerous external references, which should be restricted by using an XmlReader with a secure resolver or with DTD and XML inline schema processing disabled. This rule detects code that uses the xref:System.Xml.Serialization.XmlSerializer.Deserialize%2A?displayProperty=nameWithType method and does not take XmlReader as a constructor parameter.
@@ -4203,11 +4206,11 @@ dotnet_diagnostic.CA5372.severity = none
 ## Do not use obsolete key derivation function (CA5373)
 ## This rule detects the invocation of weak key derivation methods xref:System.Security.Cryptography.PasswordDeriveBytes?displayProperty=nameWithType and xref:System.Security.Cryptography.Rfc2898DeriveBytes.CryptDeriveKey%2A?displayProperty=nameWithType.
 ## xref:System.Security.Cryptography.PasswordDeriveBytes?displayProperty=nameWithType used a weak algorithm PBKDF1. xref:System.Security.Cryptography.Rfc2898DeriveBytes.CryptDeriveKey%2A?displayProperty=nameWithType does not use iteration count and salt from the Rfc2898DeriveBytes object, which makes it weak.
-dotnet_diagnostic.CA5373.severity = error
+dotnet_diagnostic.CA5373.severity = none
 
 ## Do not use XslTransform (CA5374)
 ## xref:System.Xml.Xsl.XslTransform is vulnerable when operating on untrusted input. An attack could execute arbitrary code.
-dotnet_diagnostic.CA5374.severity = error
+dotnet_diagnostic.CA5374.severity = none
 
 ## Do not use account shared access signature (CA5375)
 ## An account SAS can delegate access to read, write, and delete operations on blob containers, tables, queues, and file shares that are not permitted with a service SAS. However, it doesn't support container-level policies and has less flexibility and control over the permissions that are granted. If possible, use a service SAS for fine grained access control. For more information, see Delegate access with a shared access signature.
@@ -4239,33 +4242,33 @@ dotnet_diagnostic.CA5381.severity = none
 
 ## Use secure cookies in ASP.NET Core (CA5382)
 ## Applications available over HTTPS must use secure cookies, which indicate to the browser that the cookie should only be transmitted using Transport Layer Security (TLS).
-dotnet_diagnostic.CA5382.severity = warning
+dotnet_diagnostic.CA5382.severity = none
 
 ## Ensure use secure cookies in ASP.NET Core (CA5383)
 ## Applications available over HTTPS must use secure cookies, which indicate to the browser that the cookie should only be transmitted using Transport Layer Security (TLS).
-dotnet_diagnostic.CA5383.severity = warning
+dotnet_diagnostic.CA5383.severity = none
 
 ## Do not use digital signature algorithm (DSA) (CA5384)
 ## DSA is a weak asymmetric encryption algorithm.
-dotnet_diagnostic.CA5384.severity = error
+dotnet_diagnostic.CA5384.severity = none
 
 ## Use Rivest???Shamir???Adleman (RSA) algorithm with sufficient key size (CA5385)
 ## An RSA key smaller than 2048 bits is more vulnerable to brute force attacks.
-dotnet_diagnostic.CA5385.severity = error
+dotnet_diagnostic.CA5385.severity = none
 
 ## Avoid hardcoding SecurityProtocolType value (CA5386)
 ## Transport Layer Security (TLS) secures communication between computers, most commonly with Hypertext Transfer Protocol Secure (HTTPS). Protocol versions TLS 1.0 and TLS 1.1 are deprecated, while TLS 1.2 and TLS 1.3 are current. In the future, TLS 1.2 and TLS 1.3 may be deprecated. To ensure that your application remains secure, avoid hardcoding a protocol version and target at least .NET Framework v4.7.1. For more information, see Transport Layer Security (TLS) best practices with .NET Framework.
-dotnet_diagnostic.CA5386.severity = error
+dotnet_diagnostic.CA5386.severity = none
 
 ## Do not use weak key derivation function with insufficient iteration count (CA5387)
 ## This rule checks if a cryptographic key was generated by xref:System.Security.Cryptography.Rfc2898DeriveBytes with an iteration count of less than 100,000. A higher iteration count can help mitigate against dictionary attacks that try to guess the generated cryptographic key.
 ## This rule is similar to CA5388, but analysis determines that the iteration count is less than 100,000.
-dotnet_diagnostic.CA5387.severity = error
+dotnet_diagnostic.CA5387.severity = none
 
 ## Ensure sufficient iteration count when using weak key derivation function (CA5388)
 ## This rule checks if a cryptographic key was generated by xref:System.Security.Cryptography.Rfc2898DeriveBytes with an iteration count that may be less than 100,000. A higher iteration count can help mitigate against dictionary attacks that try to guess the generated cryptographic key.
 ## This rule is similar to CA5387, but analysis can't determine if the iteration count is less than 100,000.
-dotnet_diagnostic.CA5388.severity = error
+dotnet_diagnostic.CA5388.severity = none
 
 ## Do not add archive item's path to the target file system path (CA5389)
 ## File path can be relative and can lead to file system access outside of the expected file system target path, leading to malicious config changes and remote code execution via lay-and-wait technique.
@@ -4273,7 +4276,7 @@ dotnet_diagnostic.CA5389.severity = none
 
 ## Do not hard-code encryption key (CA5390)
 ## For a symmetric algorithm to be successful, the secret key must be known only to the sender and the receiver. When a key is hard-coded, it is easily discovered. Even with compiled binaries, it is easy for malicious users to extract it. Once the private key is compromised, the cipher text can be decrypted directly and is not protected anymore.
-dotnet_diagnostic.CA5390.severity = error
+dotnet_diagnostic.CA5390.severity = none
 
 ## Use antiforgery tokens in ASP.NET Core MVC controllers (CA5391)
 ## Handling a POST, PUT, PATCH, or DELETE request without validating an antiforgery token may be vulnerable to cross-site request forgery attacks. A cross-site request forgery attack can send malicious requests from an authenticated user to your ASP.NET Core MVC controller.
@@ -4292,7 +4295,7 @@ dotnet_diagnostic.CA5393.severity = none
 
 ## Do not use insecure randomness (CA5394)
 ## Using a cryptographically weak pseudo-random number generator may allow an attacker to predict what security-sensitive value will be generated.
-dotnet_diagnostic.CA5394.severity = error
+dotnet_diagnostic.CA5394.severity = none
 
 ## Miss HttpVerb attribute for action methods (CA5395)
 ## All the action methods that create, edit, delete, or otherwise modify data needs to be protected with the antiforgery attribute from cross-site request forgery attacks. Performing a GET operation should be a safe operation that has no side effects and doesn't modify your persisted data.
@@ -4304,11 +4307,11 @@ dotnet_diagnostic.CA5396.severity = none
 
 ## Do not use deprecated SslProtocols values (CA5397)
 ## Transport Layer Security (TLS) secures communication between computers, most commonly with Hypertext Transfer Protocol Secure (HTTPS). Older protocol versions of TLS are less secure than TLS 1.2 and TLS 1.3 and are more likely to have new vulnerabilities. Avoid older protocol versions to minimize risk. For guidance on identifying and removing deprecated protocol versions, see Solving the TLS 1.0 Problem, 2nd Edition.
-dotnet_diagnostic.CA5397.severity = error
+dotnet_diagnostic.CA5397.severity = none
 
 ## Avoid hardcoded SslProtocols values (CA5398)
 ## Transport Layer Security (TLS) secures communication between computers, most commonly with Hypertext Transfer Protocol Secure (HTTPS). Protocol versions TLS 1.0 and TLS 1.1 are deprecated, while TLS 1.2 and TLS 1.3 are current. In the future, TLS 1.2 and TLS 1.3 may be deprecated. To ensure that your application remains secure, avoid hardcoding a protocol version. For more information, see Transport Layer Security (TLS) best practices with .NET Framework.
-dotnet_diagnostic.CA5398.severity = error
+dotnet_diagnostic.CA5398.severity = none
 
 ## Enable HttpClient certificate revocation list check (CA5399)
 ## A revoked certificate isn't trusted anymore. It could be used by attackers passing some malicious data or stealing sensitive data in HTTPS communication.
@@ -4330,15 +4333,15 @@ dotnet_diagnostic.CA5402.severity = none
 
 ## Do not hard-code certificate (CA5403)
 ## A hard-coded certificate's private key is easily discovered. Even with compiled binaries, it is easy for malicious users to extract a hard-coded certificate's private key. Once the private key is compromised, an attacker can impersonate that certificate, and any resources or operations protected by that certificate will be available to the attacker.
-dotnet_diagnostic.CA5403.severity = error
+dotnet_diagnostic.CA5403.severity = none
 
 ## Do not disable token validation checks (CA5404)
 ## Token validation checks ensure that while validating tokens, all aspects are analyzed and verified. Turning off validation can lead to security holes by allowing untrusted tokens to make it through validation.
 ## More details about best practices for token validation can be found on the library's wiki.
-dotnet_diagnostic.CA5404.severity = error
+dotnet_diagnostic.CA5404.severity = none
 
 ## Do not always skip token validation in delegates (CA5405)
 ## By setting critical TokenValidationParameter validation delegates to always return true, important authentication safeguards are disabled. Disabling safeguards can lead to incorrect validation of tokens from any issuer or expired tokens.
 ## For more information about best practices for token validation, see the library's wiki.
-dotnet_diagnostic.CA5405.severity = error
+dotnet_diagnostic.CA5405.severity = none
 
