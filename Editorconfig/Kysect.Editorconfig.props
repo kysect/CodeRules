@@ -1,13 +1,16 @@
 <Project>
     <PropertyGroup>
+        <WarningLevel>999</WarningLevel>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <!-- CA rule configuration located in .editorconfig -->
+        <!-- <AnalysisLevel>latest</AnalysisLevel> -->
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
         <NoWarn>$(NoWarn);CS1591</NoWarn>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+
         <Nullable>enable</Nullable>
         <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
-
-        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-        <EnableNETAnalyzers>true</EnableNETAnalyzers>
-        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     </PropertyGroup>
 
     <ItemGroup>
