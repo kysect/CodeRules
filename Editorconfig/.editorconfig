@@ -4,6 +4,10 @@ indent_size = 4
 indent_style = space
 insert_final_newline = false
 
+[*.{xml,csproj,props}]
+tab_width = 2
+indent_size = 2
+
 [*.{cs,vb}]
 ## Simplify name (IDE0001)
 ## This rule concerns the use of simplified type names in declarations and executable code, when possible. You can remove unnecessary name qualification to simplify code and improve readability.

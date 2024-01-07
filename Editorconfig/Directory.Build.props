@@ -1,17 +1,17 @@
 <Project>
-    <PropertyGroup>
-        <Title>Kysect.EditorConfig</Title>
-        <Description>Kysect.EditorConfig is nuget package for sharing and sync .editorconfig file between projects.</Description>
-        <Authors>Kysect</Authors>
-        <Company>Kysect</Company>
-        <RepositoryUrl>https://github.com/kysect/CodeRules</RepositoryUrl>
-        <PackageProjectUrl>https://github.com/kysect/CodeRules</PackageProjectUrl>
-        <Version>1.1.6</Version>
-        <PackageReadmeFile>Readme.md</PackageReadmeFile>
-        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  <PropertyGroup>
+    <Title>Kysect.EditorConfig</Title>
+    <Description>Kysect.EditorConfig is nuget package for sharing and sync .editorconfig file between projects.</Description>
+    <Authors>Kysect</Authors>
+    <Company>Kysect</Company>
+    <RepositoryUrl>https://github.com/kysect/CodeRules</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/kysect/CodeRules</PackageProjectUrl>
+    <Version>1.1.6</Version>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
 
-        <UseArtifactsOutput>true</UseArtifactsOutput>
-        <LangVersion>latest</LangVersion>
-        <ImplicitUsings>enable</ImplicitUsings>
-    </PropertyGroup>
+    <UseArtifactsOutput>true</UseArtifactsOutput>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
 </Project>
