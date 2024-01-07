@@ -1,28 +1,28 @@
 <Project>
-    <PropertyGroup>
-        <WarningLevel>999</WarningLevel>
-        <EnableNETAnalyzers>true</EnableNETAnalyzers>
-        <!-- CA rule configuration located in .editorconfig -->
-        <!-- <AnalysisLevel>latest</AnalysisLevel> -->
-        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-        <NoWarn>$(NoWarn);CS1591</NoWarn>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  <PropertyGroup>
+    <WarningLevel>999</WarningLevel>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <!-- CA rule configuration located in .editorconfig -->
+    <!-- <AnalysisLevel>latest</AnalysisLevel> -->
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 
-        <Nullable>enable</Nullable>
-        <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
-    </PropertyGroup>
+    <Nullable>enable</Nullable>
+    <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <EditorConfigFilesToCopy Include="$(MSBuildThisFileDirectory)..\content\Rules\.editorconfig" />
-    </ItemGroup>
+  <ItemGroup>
+    <EditorConfigFilesToCopy Include="$(MSBuildThisFileDirectory)..\content\Rules\.editorconfig" />
+  </ItemGroup>
 
-    <Target Name="CopyEditorConfig" BeforeTargets="BeforeBuild">
-        <Message Text="Copying the .editorconfig file from '@(EditorConfigFilesToCopy)' to '$(SolutionDir)'"></Message>
-        <Copy
-            SourceFiles="@(EditorConfigFilesToCopy)"
-            DestinationFolder="$(SolutionDir)"
-            SkipUnchangedFiles="true"
-            UseHardlinksIfPossible="false" />
-    </Target>
+  <Target Name="CopyEditorConfig" BeforeTargets="BeforeBuild">
+    <Message Text="Copying the .editorconfig file from '@(EditorConfigFilesToCopy)' to '$(SolutionDir)'"></Message>
+    <Copy
+      SourceFiles="@(EditorConfigFilesToCopy)"
+      DestinationFolder="$(SolutionDir)"
+      SkipUnchangedFiles="true"
+      UseHardlinksIfPossible="false" />
+  </Target>
 </Project>
