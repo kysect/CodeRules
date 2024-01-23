@@ -2,10 +2,9 @@
   <PropertyGroup>
     <WarningLevel>999</WarningLevel>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <!-- CA rule configuration located in .editorconfig -->
-    <!-- <AnalysisLevel>latest</AnalysisLevel> -->
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <NoWarn Condition="$(IsTestProject) == 'true'">$(NoWarn);CA1707</NoWarn>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 
@@ -17,7 +16,8 @@
     <EditorConfigFilesToCopy Include="$(MSBuildThisFileDirectory)..\content\Rules\.editorconfig" />
   </ItemGroup>
 
-  <Target Name="CopyEditorConfig" BeforeTargets="BeforeBuild">
+  <!-- *Undefined* is deafult value when dotnet try to build one project -->
+  <Target Name="CopyEditorConfig" BeforeTargets="BeforeBuild" Condition="$(SolutionDir) != '*Undefined*' and $(SolutionDir) != ''">
     <Message Text="Copying the .editorconfig file from '@(EditorConfigFilesToCopy)' to '$(SolutionDir)'"></Message>
     <Copy
       SourceFiles="@(EditorConfigFilesToCopy)"
