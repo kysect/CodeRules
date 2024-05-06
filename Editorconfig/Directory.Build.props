@@ -6,12 +6,13 @@
     <Company>Kysect</Company>
     <RepositoryUrl>https://github.com/kysect/CodeRules</RepositoryUrl>
     <PackageProjectUrl>https://github.com/kysect/CodeRules</PackageProjectUrl>
-    <Version>1.1.8</Version>
+    <Version>1.1.9</Version>
     <PackageReadmeFile>Readme.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
 
     <UseArtifactsOutput>true</UseArtifactsOutput>
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
+    <DevelopmentDependency>true</DevelopmentDependency>
   </PropertyGroup>
 </Project>
