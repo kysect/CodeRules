@@ -1,10 +1,10 @@
 # Code rules
 
-Данный репозиторий содержит набор правил, которые мы пытаемся соблюдать при написании проектов в секте.
+Данный репозиторий содержит набор правил, которые мы пытаемся соблюдать при написании проектов в Kysect.
 
 - [Основной кодстайл](Codestyles/Main.md)
-- [Solution structure](Guides/SolutionStructure.md)
-- [editorconfig](EditorConfig/.editorconfig)
+- [Заметки по созданию структуры solution'а](Guides/SolutionStructure.md)
+- [.editorconfig](https://github.com/kysect/SolutionDefaults/blob/master/Sources/.editorconfig), который используется для настройки статического анализа в соответствии с кодстайлом.
 
 ## Процедура добавления нового правила стиля / изменения существующего
 
